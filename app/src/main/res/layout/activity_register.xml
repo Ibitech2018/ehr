@@ -1,9 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:orientation="vertical"
     tools:context="com.divide.ibitech.divide_ibitech.Register">
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+    <TextView
+        android:id="@+id/welcom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="100dp"
+        android:textSize="35dp"
+        android:textColor="#ffff"
+        android:layout_marginTop="20dp"
+        android:text="Welcome !" />
+
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="100dp"
+        android:textSize="16dp"
+        android:textColor="#ffff"
+        android:layout_marginTop="20dp"
+        android:text="Be your own patient !" />
+    <TextView
+        android:id="@+id/Line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="90dp"
+        android:textSize="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffff"
+        android:text="----------------------------------- "
+        android:layout_marginBottom="16dp"
+        />
+    <TextView
+        android:id="@+id/regst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="150dp"
+        android:textSize="19dp"
+        android:textColor="#ffff"
+        android:layout_marginTop="0dp"
+        android:text="Register " />
+    <EditText
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:id="@+id/ID_Num"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="ID Number"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:inputType=""
+        android:text="" />
+    <EditText
+        android:drawableStart="@drawable/ic_phone_black_24dp"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:id="@+id/Contact_Number"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Contact Number"
+        android:inputType=""
+        android:text="" />
+
+    <EditText
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:id="@+id/Email"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="E-mail Address"
+        android:inputType="textPersonName"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="" />
+
+    <EditText
+
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:id="@+id/Password"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Create Pasword"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:id="@+id/confirm_password"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="20dp"
+        android:hint="Confirm Pasword"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp" />
+
+
+    <Button
+        android:id="@+id/button_Register"
+        android:layout_width="195dp"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="0dp"
+        android:background="#233ED1"
+        android:text="Register" />
+
+    <TextView
+        android:id="@+id/Login_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="100dp"
+        android:text="Already a User?     Login" />
+
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="" />
+
+
+</LinearLayout>

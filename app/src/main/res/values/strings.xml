@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Divide_Ibitech</string>
+
+    <string-array name="list_status">
+        <item>Single</item>
+        <item>Married</item>
+        <item>Devorced</item>
+    </string-array>
+    <string-array name="list_blood">
+        <item>A</item>
+        <item>O</item>
+        <item>AB</item>
+        <item>B</item>
+    </string-array>
 </resources>
