@@ -16,10 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user_login" />
         <activity android:name=".slide_one" />
         <activity android:name=".slide_two" />
-        <activity android:name=".welcome"></activity>
+        <activity android:name=".welcome"/>
+        <activity android:name=".user_login" />
+
     </application>
 
 </manifest>
