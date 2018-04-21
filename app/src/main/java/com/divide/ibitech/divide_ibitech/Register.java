@@ -12,7 +12,6 @@ public class Register extends AppCompatActivity {
 
     EditText idNum, enterPassword, confirmPassword, emailAddress, contactNo;
     Button buttonRegister;
-    TextView Login_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +26,6 @@ public class Register extends AppCompatActivity {
         contactNo = findViewById(R.id.Contact_Number);
 
         buttonRegister= findViewById(R.id.button_Register);
-
-        Login_user = findViewById(R.id.Login_user);
-        Login_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent loginIntent = new Intent(Register.this,Login.class);
-                Register.this.startActivity(loginIntent);
-            }
-        });
 
     }
 }

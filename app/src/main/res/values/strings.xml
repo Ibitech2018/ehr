@@ -12,4 +12,5 @@
         <item>AB</item>
         <item>B</item>
     </string-array>
+    <string name="terms">Terms and Conditions</string>
 </resources>
