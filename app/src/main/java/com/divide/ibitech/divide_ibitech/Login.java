@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class user_login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class user_login extends AppCompatActivity {
         new_userRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerInttent = new Intent(user_login.this,Register.class);
-                user_login.this.startActivity(registerInttent);
+                Intent registerInttent = new Intent(Login.this,Register.class);
+                Login.this.startActivity(registerInttent);
             }
         });
     }
