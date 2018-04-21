@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register">
+        <activity android:name=".welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,9 +18,7 @@
         </activity>
         <activity android:name=".slide_one" />
         <activity android:name=".slide_two" />
-        <activity android:name=".welcome"/>
-        <activity android:name=".user_login" />
-
+        <activity android:name=".register" />
     </application>
 
 </manifest>

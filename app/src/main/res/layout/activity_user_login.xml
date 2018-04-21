@@ -51,7 +51,7 @@
         android:textColor="#ffff"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="40dp"
-        android:text="Register " />
+        android:text="Login" />
     <EditText
         android:drawableStart="@drawable/ic_person_black_24dp"
         android:drawableLeft="@drawable/ic_person_black_24dp"
@@ -113,9 +113,10 @@
         android:id="@+id/password_retrived"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginBottom="14dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginStart="140dp"
+        android:clickable="true"
         android:text="Forgot password" />
 
     <TextView
@@ -125,15 +126,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="128dp"
         android:layout_marginBottom="14dp"
-        android:text="New User?     Register" />
+        android:text="New User?   Register" />
+
     <TextView
         android:id="@+id/terms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="14dp"
-        android:text="By signing iin you agree to  our privacy policy and terms and conditions" />
+        android:text="By signing in you agree to our privacy policy and terms and conditions" />
 
 
 
