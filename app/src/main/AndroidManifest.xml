@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".slide_one" />
-        <activity android:name=".slide_two" />
+        <activity android:name=".Slide_one" />
+        <activity android:name=".Slide_two" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
     </application>

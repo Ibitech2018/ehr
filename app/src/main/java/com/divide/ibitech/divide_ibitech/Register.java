@@ -26,6 +26,18 @@ public class Register extends AppCompatActivity {
         contactNo = findViewById(R.id.Contact_Number);
 
         buttonRegister= findViewById(R.id.button_Register);
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSlideOne();
+            }
+        });
 
     }
+
+    private void startSlideOne() {
+        Intent intent = new Intent(this, Slide_one.class);
+        startActivity(intent);
+    }
+
 }
