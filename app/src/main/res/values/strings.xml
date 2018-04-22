@@ -13,4 +13,8 @@
         <item>B</item>
     </string-array>
     <string name="terms">Terms and Conditions</string>
+    <string name="welcomeLogin_text">Login</string>
+    <string name="welcomeRegister_text">Register</string>
+    <string name="welcome_main_text">Welcome to Ibitech</string>
+    <string name="welcome_ibitech_logo">Ibitech logo</string>
 </resources>
