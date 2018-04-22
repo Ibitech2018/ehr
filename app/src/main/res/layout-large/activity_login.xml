@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_back"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.divide.ibitech.divide_ibitech.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ibitech_mini_logo"
+            android:textColor="#ffff" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Login"
+            android:textColor="#000"
+            android:textSize="22sp" />
+
+        <View
+            android:layout_width="88dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="9dp"
+            android:background="#000" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+    <EditText
+        android:id="@+id/ID_Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="ID Number"
+        android:inputType="number"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/Contact_Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_phone_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="Contact Number"
+        android:inputType="number"
+        android:text="" />
+
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="Enter Pasword"
+        android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+       >
+
+    <Button
+        android:id="@+id/button_Login"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:textSize="20sp"
+        android:background="@drawable/buttonstyle"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/txtForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Forgot password ?" />
+
+    <TextView
+        android:id="@+id/new_userRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_marginTop="20dp"
+        android:text="New User?   Register" />
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="By signing in you agree to our privacy policy and terms and conditions."
+        android:textAlignment="center"
+        android:textSize="21sp" />
+</LinearLayout>
