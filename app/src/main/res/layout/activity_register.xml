@@ -9,19 +9,16 @@
     tools:context="com.divide.ibitech.divide_ibitech.Register">
 
 
-
-
     <ImageView
         android:id="@+id/logo"
-        android:src="@drawable/ibitech_mini_logo"
-        android:scaleType="centerCrop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="100dp"
-        android:textColor="#ffff"
-        android:layout_marginTop="20dp"
-         />
+        android:layout_marginTop="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ibitech_mini_logo"
+        android:textColor="#ffff" />
 
     <TextView
         android:id="@+id/slogan"
@@ -135,9 +132,10 @@
         android:layout_marginBottom="14dp"
         android:layout_marginLeft="2dp"
         android:layout_marginStart="0dp"
-        android:background="@drawable/buttonstyle"
         android:layout_marginTop="15dp"
-        android:text="Register" />
+        android:background="@drawable/buttonstyle"
+        android:text="Register"
+        android:textColor="@android:color/white" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

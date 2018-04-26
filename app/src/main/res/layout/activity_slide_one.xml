@@ -12,7 +12,7 @@
         android:layout_width="350dp"
         android:layout_height="575dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="@android:color/white">
 
 
@@ -23,19 +23,6 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo2" />
 
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imglogo"
-            android:layout_marginEnd="40sp"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="40sp"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="12sp"
-            android:gravity="center_horizontal"
-            android:text="Enter your data below"
-            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/Fname"
@@ -43,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/textview"
+            android:layout_below="@id/imglogo"
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
             android:layout_marginTop="5sp"
@@ -79,7 +66,7 @@
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
             android:layout_marginTop="5sp"
-            android:hint="dd/mm/yyyy"
+            android:hint="DD/MM/YYYY"
             android:text=""
 
             />
@@ -117,8 +104,7 @@
             android:layout_marginStart="22dp"
             android:layout_toEndOf="@+id/imglogo"
             android:layout_toRightOf="@+id/imglogo"
-            android:text="Male"
-            />
+            android:text="Male" />
 
         <EditText
             android:id="@+id/address1"
@@ -137,7 +123,7 @@
             />
 
         <EditText
-            android:id="@+id/address2"
+            android:id="@+id/suburb"
             android:layout_width="322sp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -158,36 +144,39 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/address2"
+            android:layout_below="@id/suburb"
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
             android:layout_marginTop="5sp"
             android:hint="City"
             android:inputType="text"
             android:text=""
-
+            />
+        <EditText
+            android:id="@+id/postalCode"
+            android:layout_width="322sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/City"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginTop="5sp"
+            android:hint="Postal Code"
+            android:inputType="text"
+            android:text=""
             />
 
-        <EditText
-            android:id="@+id/zip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textview"
-            android:layout_marginBottom="47dp"
-            android:ems="10"
-            android:hint="Zip code"
-            android:inputType="number"
-            android:text=""
-            android:layout_alignLeft="@+id/textview" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="7dp"
+            android:layout_alignLeft="@+id/male"
+            android:layout_alignStart="@+id/male"
+            android:layout_below="@+id/postalCode"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
             android:text="Next" />
     </RelativeLayout>
 
