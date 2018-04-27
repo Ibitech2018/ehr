@@ -13,10 +13,11 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="5dp"
         android:scaleType="centerCrop"
+
         android:src="@drawable/ibitech_mini_logo"
         android:textColor="#ffff" />
 
@@ -42,7 +43,7 @@
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="9dp"
         android:id="@+id/ID_Num"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:ems="14"
         android:hint="ID Number"
@@ -57,13 +58,13 @@
         android:drawableLeft="@drawable/ic_phone_black_24dp"
         android:drawablePadding="9dp"
         android:id="@+id/Contact_Number"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:ems="14"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="8dp"
-        android:hint="Contact Number"
+        android:hint="Cell Number"
         android:inputType="number"
         android:text="" />
 
@@ -72,7 +73,7 @@
         android:drawableLeft="@drawable/ic_email_black_24dp"
         android:drawablePadding="9dp"
         android:id="@+id/Email"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:ems="14"
         android:hint="E-mail Address"
@@ -88,7 +89,7 @@
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="9dp"
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:ems="14"
         android:hint="Create Password"
@@ -102,7 +103,7 @@
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="9dp"
         android:id="@+id/confirm_password"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:ems="14"
         android:layout_marginStart="20dp"
@@ -143,6 +144,7 @@
         android:layout_gravity="center">
 
         <TextView
+            android:id="@+id/already_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already a User? Login"

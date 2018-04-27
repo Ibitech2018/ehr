@@ -20,21 +20,10 @@
             android:id="@+id/imgLogo"
             android:layout_width="100sp"
             android:layout_height="100sp"
+            android:layout_marginTop="35dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo2" />
-
-        <TextView
-            android:id="@+id/more_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/Status"
-            android:layout_marginTop="146dp"
-            android:gravity="center_horizontal"
-            android:text="Additional details"
-            android:textSize="18sp"
-            android:layout_alignLeft="@+id/Status" />
 
 
         <TextView

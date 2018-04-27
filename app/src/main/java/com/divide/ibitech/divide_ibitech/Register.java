@@ -12,6 +12,7 @@ public class Register extends AppCompatActivity {
 
     EditText idNum, enterPassword, confirmPassword, emailAddress, contactNo;
     Button buttonRegister;
+    TextView Already_User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class Register extends AppCompatActivity {
         confirmPassword= findViewById(R.id.confirm_password);
         emailAddress= findViewById(R.id.Email);
         contactNo = findViewById(R.id.Contact_Number);
-
+        Already_User=findViewById(R.id.already_user);
         buttonRegister= findViewById(R.id.button_Register);
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,7 @@ public class Register extends AppCompatActivity {
                 startSlideOne();
             }
         });
+
 
     }
 
