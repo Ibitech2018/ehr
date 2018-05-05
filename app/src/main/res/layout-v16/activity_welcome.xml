@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
-        android:background="@drawable/gradient_back"
+        android:background="#fff"
         android:orientation="horizontal">
 
         <Button
@@ -46,7 +46,7 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="33dp"
+            android:layout_marginBottom="3dp"
             android:layout_marginLeft="7dp"
             android:background="@drawable/buttonstyle"
             android:text="Register"
@@ -57,7 +57,7 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="33dp"
+            android:layout_marginBottom="3dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/buttonstyle"
             android:text="Login"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_back"
+    android:background="#fff"
     android:orientation="vertical"
     tools:context="com.divide.ibitech.divide_ibitech.Register">
 
@@ -17,7 +17,6 @@
         android:layout_marginStart="111dp"
         android:layout_marginTop="5dp"
         android:scaleType="centerCrop"
-
         android:src="@drawable/ibitech_mini_logo"
         android:textColor="#ffff" />
 
@@ -64,7 +63,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="8dp"
-        android:hint="Cell Number"
+        android:hint="Cellphone Number"
         android:inputType="number"
         android:text="" />
 
@@ -117,12 +116,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp">
+
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:text="By registering, you agree to our Terms and Conditions and Privacy Policy."
-            android:textSize="12sp"/>
+            android:textAlignment="gravity"
+            android:textSize="13sp"
+            android:layout_marginLeft="20dp" />
     </RelativeLayout>
 
     <Button
@@ -133,7 +135,7 @@
         android:layout_marginBottom="14dp"
         android:layout_marginLeft="2dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/buttonstyle"
         android:text="Register"
         android:textColor="@android:color/white" />
@@ -147,8 +149,10 @@
             android:id="@+id/already_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Already a User? Login"
-            android:textSize="14dp" />
+            android:textSize="16dp"
+            />
 
 
     </RelativeLayout>

@@ -1,17 +1,19 @@
 <resources>
     <string name="app_name">Divide_Ibitech</string>
 
-    <string-array name="list_status">
+    <string-array name="marital_status">
         <item>Single</item>
         <item>Married</item>
-        <item>Devorced</item>
+        <item>Divorced</item>
     </string-array>
+
     <string-array name="list_blood">
         <item>A</item>
         <item>O</item>
         <item>AB</item>
         <item>B</item>
     </string-array>
+
     <string name="terms">Terms and Conditions</string>
     <string name="welcomeLogin_text">Login</string>
     <string name="welcomeRegister_text">Register</string>
