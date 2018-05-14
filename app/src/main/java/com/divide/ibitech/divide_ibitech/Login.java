@@ -28,5 +28,15 @@ public class Login extends AppCompatActivity {
                 Login.this.startActivity(registerInttent);
             }
         });
+
+        button_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerInttent = new Intent(Login.this,dashboard.class);
+                Login.this.startActivity(registerInttent);
+            }
+        });
+
     }
+
 }

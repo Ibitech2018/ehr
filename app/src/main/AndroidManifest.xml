@@ -8,6 +8,8 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,8 +28,7 @@
         <activity android:name=".Slide_two" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
+        <activity android:name=".dashboard"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
