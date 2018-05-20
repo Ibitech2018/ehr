@@ -10,10 +10,16 @@ import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
 
+        //Define views
+        EditText ID_Num,Contact_Number,Password;
+        Button button_Login;
+        TextView new_userRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //Getting id by from xml
         final EditText ID_num= (EditText)findViewById(R.id.ID_Num);
         final EditText Contact_Number= (EditText) findViewById(R.id.Contact_Number);
         final EditText Password= (EditText) findViewById(R.id.Password);
