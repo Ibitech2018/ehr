@@ -29,6 +29,8 @@
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".dashboard"></activity>
+        <activity android:name=".Pop"
+            android:theme="@style/AppTheme.PopUp"></activity>
     </application>
 
 </manifest>

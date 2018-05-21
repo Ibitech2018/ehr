@@ -314,7 +314,8 @@
             android:layout_width="170dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/manageCondition">
 
 
             <ImageView
@@ -346,7 +347,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Manage condtiotion"
+                android:text="Manage conditions"
                 android:textColor="@color/cardview_dark_background" />
 
 
@@ -491,7 +492,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Request Devise"
+                android:text="Request Device"
                 android:textColor="@color/cardview_dark_background" />
 
 
