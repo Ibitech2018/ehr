@@ -12,13 +12,17 @@
         android:text="Manage Conditions"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" /<android.support.design.widget.FloatingActionButton
-    android:id="@+id/floatingActionButton2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"  android:clickable="true" app:srcCompat="@android:drawable/ic_input_add"/>>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="98dp"
+        tools:ignore="MissingConstraints" /><![CDATA[
 
+    >
+
+]]>
 </android.support.constraint.ConstraintLayout>
