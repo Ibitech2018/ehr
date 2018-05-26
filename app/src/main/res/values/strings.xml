@@ -19,4 +19,14 @@
     <string name="welcomeRegister_text">Register</string>
     <string name="welcome_main_text">Welcome to Ibitech</string>
     <string name="welcome_ibitech_logo">Ibitech logo</string>
+    <string name="imgContentDescription">Ibitech logo</string>
+    <string name="txtLogin">Login</string>
+    <string name="hint_idNumber">ID Number</string>
+    <string name="hint_CellphoneNum">Cellphone Number</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="txtLoginBtn">Login</string>
+    <string name="txtForgot_password">Forgot password</string>
+    <string name="txtNewRegister">Register</string>
+    <string name="txtNew_user">New User?</string>
+    <string name="txtTermsandConds">By signing in you agree to our privacy policy and terms and conditions.</string>
 </resources>

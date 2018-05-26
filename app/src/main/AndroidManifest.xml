@@ -28,9 +28,10 @@
         <activity android:name=".Slide_two" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
-        <activity android:name=".dashboard"></activity>
-        <activity android:name=".Pop"
-            android:theme="@style/AppTheme.PopUp"></activity>
+        <activity android:name=".dashboard" />
+        <activity
+            android:name=".Pop"
+            android:theme="@style/AppTheme.PopUp" />
     </application>
 
 </manifest>
