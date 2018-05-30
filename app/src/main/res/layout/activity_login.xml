@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,7 +44,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="9dp"
         android:drawableStart="@drawable/ic_person_black_24dp"
@@ -67,21 +68,48 @@
         android:inputType="number"
         android:text="" />
 
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="342dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:drawableLeft="@drawable/ic_lock_black_24dp"
-        android:drawablePadding="9dp"
-        android:drawableStart="@drawable/ic_lock_black_24dp"
-        android:ems="10"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword" />
+        android:layout_marginStart="20dp">
 
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="9dp"
+            android:drawableStart="@drawable/ic_lock_black_24dp"
+            android:ems="10"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword" />
+
+
+        <TextView
+            android:id="@+id/tvTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/txtToggleSHOW"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etPassword"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/etPassword"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            android:focusable="true" />
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/btnLogin"
@@ -89,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="38dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/buttonstyle"
         android:text="@string/txtLoginBtn"
         android:textColor="@color/White"
@@ -102,11 +130,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/txtForgot_password"
-        android:textSize="16sp"
+        android:textSize="17sp"
         />
 
     <LinearLayout
@@ -114,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
         <TextView
@@ -125,7 +153,7 @@
             android:textAlignment="textEnd"
             android:layout_weight="2"
             android:text="@string/txtNew_user"
-            android:textSize="16sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tvNewRegister"
@@ -135,20 +163,32 @@
             android:layout_weight="2"
             android:text="@string/txtNewRegister"
             android:paddingLeft="7dp"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:paddingStart="7dp"
             tools:ignore="RtlSymmetry"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            android:textColorLink="#0000FF"
+            android:textColor="#0000FF"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvTerms"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:layout_marginBottom="2dp"
-        android:text="@string/txtTermsandConds"
-        android:textAlignment="center" />
+        android:layout_margin="3dp"
+        >
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="@string/txtTermsandConds"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteY="8dp"
+            tools:ignore="MissingConstraints"
+            android:textSize="16sp"
+            />
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

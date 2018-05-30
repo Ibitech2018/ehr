@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Divide_Ibitech</string>
+    <string name="app_name">Ibitech</string>
 
     <string-array name="marital_status">
         <item>Single</item>
@@ -26,7 +26,8 @@
     <string name="hint_password">Enter Password</string>
     <string name="txtLoginBtn">Login</string>
     <string name="txtForgot_password">Forgot password</string>
-    <string name="txtNewRegister">Register</string>
+    <string name="txtNewRegister"><u>Register</u></string>
     <string name="txtNew_user">New User?</string>
-    <string name="txtTermsandConds">By signing in you agree to our privacy policy and terms and conditions.</string>
+    <string name="txtTermsandConds">By signing in you agree to our <u>privacy policy</u> and <u>terms and conditions</u>.</string>
+    <string name="txtToggleSHOW">SHOW</string>
 </resources>

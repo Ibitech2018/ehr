@@ -27,7 +27,8 @@
         <activity android:name=".Slide_one" />
         <activity android:name=".Slide_two" />
         <activity android:name=".Register" />
-        <activity android:name=".Login" />
+        <activity android:name=".Login"
+            android:screenOrientation="locked"/>
         <activity android:name=".dashboard" />
         <activity
             android:name=".Pop"
