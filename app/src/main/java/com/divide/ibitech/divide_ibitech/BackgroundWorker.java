@@ -28,8 +28,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        //String login_url = "http://sict-iis/ibitech/app/login.php";
-        String login_url = "http://10.102.129.135/ibitech/login.php";
+        String login_url = "http://sict-iis.nmmu.ac.za/ibitech/app/login.php";
+        //String login_url = "http://10.103.121.50/ibitech/app/login.php";
         if(type.equals("login")){
             try {
                 String userID = params[1];
@@ -52,7 +52,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result = "";
-                String line = "";
+                String line;
 
                 while ((line = bufferedReader.readLine()) != null){
                     result += line;
