@@ -108,7 +108,8 @@
             app:layout_constraintStart_toStartOf="@+id/etPassword"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
-            android:focusable="true" />
+            android:focusable="true"
+            tools:targetApi="jelly_bean" />
     </android.support.constraint.ConstraintLayout>
 
     <Button
