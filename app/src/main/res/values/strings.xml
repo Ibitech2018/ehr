@@ -30,4 +30,50 @@
     <string name="txtNew_user">New User?</string>
     <string name="txtTermsandConds">By signing in you agree to our <u>privacy policy</u> and <u>terms and conditions</u>.</string>
     <string name="txtToggleSHOW">SHOW</string>
+    <string name="txtUserProfilePic">User profile picture</string>
+    <string name="txtUserFullName">Aphiwe Adonisi</string>
+    <string name="txtAge">Age:</string>
+    <string name="txtGender">Gender:</string>
+    <string name="txtBloodType">Blood Type:</string>
+    <string name="txtStatus">Status:</string>
+    <string name="txtManage_medical_aid">Manage Medical Aid</string>
+    <string name="txtMedical_aid">Medical Aid</string>
+    <string name="txtManage_next_of_kin">Manage Next Of Kin</string>
+    <string name="txtNext_of_kin">Next Of Kin</string>
+    <string name="txtMedical_aid_icon">Medical aid icon</string>
+    <string name="txtNext_of_kin_icon">Next of kin icon</string>
+    <string name="txtManage_allergies">Manage Allergies</string>
+    <string name="txtAllergies">Allergies</string>
+    <string name="txtDevices_icon">Devices icon</string>
+    <string name="txtDevices">Devices</string>
+    <string name="txtRequest_device">Request Device</string>
+    <string name="txtManage_allergies_icon">Manage Allergies icon</string>
+    <string name="txtManage_symptoms">Manage symptoms</string>
+    <string name="txtManage_symptoms_icon">Manage symptoms icon</string>
+    <string name="txtSymptoms">Symptoms</string>
+    <string name="txtCondition_icon">Condition icon</string>
+    <string name="txtManage_conditions">Manage conditions</string>
+    <string name="txtConditions">Conditions</string>
+    <string name="txtHint_Email_address">E-mail Address</string>
+
+
+
+
+
+
+
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
+    <string name="title_slide1">Connect the charger</string>
+    <string name="desc_slide1">It will start automatically when charger is connected</string>
+    <string name="title_slide2">Battery status update</string>
+    <string name="desc_slide2">It will  keep you updated on battery charging status through notification and home screen widget</string>
+    <string name="title_slide3">Alert on 100%</string>
+    <string name="desc_slide3">It will alert you when battery reaches 100%</string>
+
+
+
+
+
 </resources>

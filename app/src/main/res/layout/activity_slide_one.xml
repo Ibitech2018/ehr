@@ -1,188 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayoutSlideOne"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.divide.ibitech.divide_ibitech.Login">
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="575dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/white">
+    tools:context="com.divide.ibitech.divide_ibitech.Slide_One">
 
 
-        <ImageView
-            android:id="@+id/imglogo"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo2" />
+    <ImageView
+        android:id="@+id/imglogo"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/logo2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021" />
 
 
-        <EditText
-            android:id="@+id/Fname"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/imglogo"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="First Name"
-            android:inputType="textPersonName"
-            android:text=""
+    <EditText
+        android:id="@+id/Fname"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/imglogo"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imglogo"
+        app:layout_constraintVertical_bias="0.01" />
 
-            />
+    <EditText
+        android:id="@+id/Lname"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/Fname"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
 
-        <EditText
-            android:id="@+id/Lname"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/Fname"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="Surname"
-            android:inputType="textPersonName"
-            android:text=""
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fname"
+        app:layout_constraintVertical_bias="0.0" />
 
-            />
+    <EditText
+        android:id="@+id/Dob"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
 
-        <EditText
-            android:id="@+id/Dob"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/Lname"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="DD/MM/YYYY"
-            android:text=""
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="DD/MM/YYYY"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Lname"
+        app:layout_constraintVertical_bias="0.002" />
 
-            />
+    <TextView
+        android:id="@+id/Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/Dob"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/txtGender"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rgGender"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dob"
+        app:layout_constraintVertical_bias="0.024" />
 
-        <TextView
-            android:id="@+id/Gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/Dob"
-            android:layout_marginLeft="21sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:text="Gender"
-            android:textSize="21sp" />
+    <RadioGroup
+        android:id="@+id/rgGender"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.993"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Dob"
+        app:layout_constraintVertical_bias="0.021">
 
         <RadioButton
             android:id="@+id/female"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/Gender"
-            android:layout_alignBottom="@id/Gender"
-            android:layout_alignLeft="@id/imglogo"
-            android:layout_alignStart="@id/imglogo"
-            android:text="Female" />
+            android:layout_weight="1"
+            android:text="Female"
+            android:onClick="OnRbClick"/>
 
         <RadioButton
             android:id="@+id/male"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/female"
-            android:layout_alignBottom="@+id/female"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp"
-            android:layout_toEndOf="@+id/imglogo"
-            android:layout_toRightOf="@+id/imglogo"
-            android:text="Male" />
+            android:layout_weight="1"
+            android:text="Male"
+            android:onClick="OnRbClick"/>
+    </RadioGroup>
 
-        <EditText
-            android:id="@+id/address1"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/male"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="AddressLine 1"
-            android:inputType="text"
-            android:text=""
+    <EditText
+        android:id="@+id/address1"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
 
-            />
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="AddressLine 1"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgGender"
+        app:layout_constraintVertical_bias="0.059" />
 
-        <EditText
-            android:id="@+id/suburb"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/address1"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="Suburb"
-            android:inputType="text"
-            android:text=""
+    <EditText
+        android:id="@+id/suburb"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/address1"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="8dp"
 
-            />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:hint="Suburb"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address1"
+        app:layout_constraintVertical_bias="0.034" />
 
-        <EditText
-            android:id="@+id/City"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/suburb"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="City"
-            android:inputType="text"
-            android:text=""
-            />
-        <EditText
-            android:id="@+id/postalCode"
-            android:layout_width="322sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/City"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="15dp"
-            android:hint="Postal Code"
-            android:inputType="number"
-            android:text=""
-            />
+    <EditText
+        android:id="@+id/City"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/suburb"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="City"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suburb"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <EditText
+        android:id="@+id/postalCode"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/City"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Postal Code"
+        android:inputType="number"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/City"
+        app:layout_constraintVertical_bias="0.147" />
 
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btnNext"
-            android:background="@drawable/buttonstyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/male"
-            android:layout_alignStart="@+id/male"
-            android:layout_below="@+id/postalCode"
-            android:layout_marginLeft="27dp"
-            android:layout_marginStart="27dp"
-            android:text="Next" />
-    </RelativeLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/buttonstyle"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postalCode"
+        app:layout_constraintVertical_bias="0.333" />
 
-</LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
 
 
 

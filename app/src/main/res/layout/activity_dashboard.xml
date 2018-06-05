@@ -59,7 +59,8 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.097"
+        android:contentDescription="@string/txtUserProfilePic" />
 
     <TextView
         android:id="@+id/tvName"
@@ -70,7 +71,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:text="Aphiwe Adonisi"
+        android:text="@string/txtUserFullName"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -83,25 +84,6 @@
         app:layout_constraintVertical_bias="0.299" />
 
 
-    <ImageView
-
-        android:id="@+id/imageView2"
-        android:layout_width="34dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.977"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204"
-        tools:ignore="VectorDrawableCompat" />
-
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="wrap_content"
@@ -112,7 +94,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Age: "
+        android:text="@string/txtAge"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +113,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Gender:"
+        android:text="@string/txtGender"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +132,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Blood Type:"
+        android:text="@string/txtBloodType"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +151,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Status:"
+        android:text="@string/txtStatus"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -275,7 +257,7 @@
         app:layout_constraintVertical_bias="0.423" />
 
 
-    <!-- CARD VIEWS -->
+    <!-- SCROLL VIEW -->
     <ScrollView
         android:id="@+id/svFunctions"
         android:layout_width="0dp"
@@ -296,6 +278,7 @@
             android:layout_height="wrap_content"
             android:isScrollContainer="false">
 
+            <!-- CARD VIEWS -->
             <android.support.v7.widget.CardView
                 android:id="@+id/cvConditions"
                 android:layout_width="160dp"
@@ -331,24 +314,23 @@
                         android:background="@drawable/circlecondition"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/wstethoscope_condition">
-
-                    </ImageView>
+                        android:src="@drawable/wstethoscope_condition"
+                        android:contentDescription="@string/txtCondition_icon" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Conditions"
+                        android:text="@string/txtConditions"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -356,7 +338,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage conditions"
+                        android:text="@string/txtManage_conditions"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -396,22 +378,25 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlesymptoms"
-                        android:padding="8dp" />
+                        android:src="@drawable/symptom_icon"
+                        android:scaleType="centerCrop"
+                        android:padding="8dp"
+                        android:contentDescription="@string/txtManage_symptoms_icon" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Symptoms"
+                        android:text="@string/txtSymptoms"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -419,7 +404,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage symptoms "
+                        android:text="@string/txtManage_symptoms"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -460,7 +445,9 @@
                         android:layout_height="64dp"
                         android:background="@drawable/circledevice"
                         android:padding="8dp"
-                        android:src="@drawable/hearing_aid_devices">
+                        android:src="@drawable/hearing_aid_devices"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/txtDevices_icon">
 
 
                     </ImageView>
@@ -470,15 +457,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Devices"
+                        android:text="@string/txtDevices"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -486,7 +473,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Request Device"
+                        android:text="@string/txtRequest_device"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -526,21 +513,24 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circleallergy"
-                        android:padding="8dp" />
+                        android:padding="8dp"
+                        android:src="@drawable/allergy_icon_ed"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/txtManage_allergies_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Allergies"
+                        android:text="@string/txtAllergies"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -548,7 +538,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage Allergies"
+                        android:text="@string/txtManage_allergies"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -587,22 +577,25 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/circleallergy"
-                        android:padding="8dp" />
+                        android:background="@drawable/circlecondition"
+                        android:src="@drawable/family_icon"
+                        android:padding="8dp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/txtNext_of_kin_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Next Of Kin"
+                        android:text="@string/txtNext_of_kin"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -610,7 +603,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage Next Of Kin"
+                        android:text="@string/txtManage_next_of_kin"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -649,22 +642,25 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlesymptoms"
-                        android:padding="8dp" />
+                        android:padding="8dp"
+                        android:src="@drawable/id_card_icon"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/txtMedical_aid_icon" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Medical Aid"
+                        android:text="@string/txtMedical_aid"
                         android:textStyle="bold" />
 
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="125dp"
                         android:layout_height="1dp"
                         android:layout_margin="10dp"
-                        android:background="@color/cardview_light_background" />
+                        android:background="#A7A7A7" />
 
 
                     <TextView
@@ -672,7 +668,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage Medical Aid "
+                        android:text="@string/txtManage_medical_aid"
                         android:textColor="@color/cardview_dark_background" />
 
 

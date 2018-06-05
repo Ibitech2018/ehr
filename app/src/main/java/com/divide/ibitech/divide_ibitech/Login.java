@@ -116,17 +116,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        //For error exclamations
-        /*
-        builder = new AlertDialog.Builder(Login.this);
-        btn_Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                next();
-            }
-        }); */
-
-        //OnClick Listeners
         tv_NewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

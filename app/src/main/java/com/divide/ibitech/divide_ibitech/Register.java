@@ -1,24 +1,32 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class Register extends AppCompatActivity {
+import com.ybs.passwordstrengthmeter.PasswordStrength;
+
+public class Register extends AppCompatActivity implements TextWatcher {
+
     AlertDialog.Builder builder;
-    String IDnum ,newPassword,cPassword,emailP,cellNo;
-    EditText idNum, enterPassword, confirmPassword, emailAddress, contactNo;
-    Button buttonRegister;
-    TextView Already_User;
+    String idNumber ,newPassword,cPassword,emailAddress,cellphoneNumber;
+    EditText et_IDNumber, et_EnterPassword, et_ConfirmPassword, et_EmailAddress, et_CellphoneNum;
+    Button btn_Register;
+    TextView tv_login,strengthView;
+    ProgressBar progressBar;
+    Boolean valid = false,checked = false;
+    CheckBox policyCheck;
 
 
     @Override
@@ -26,122 +34,237 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Get input values from xml
+        et_IDNumber = findViewById(R.id.etIDNumber);
 
-        idNum = findViewById(R.id.ID_Num);
-        enterPassword = findViewById(R.id.Password);
-        confirmPassword= findViewById(R.id.confirm_password);
-        emailAddress= findViewById(R.id.Email);
-        contactNo = findViewById(R.id.Contact_Number);
-        Already_User=findViewById(R.id.already_user);
-        buttonRegister= findViewById(R.id.button_Register);
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        et_EnterPassword = findViewById(R.id.etCreatePassword);
+        et_EnterPassword.addTextChangedListener(this);
+
+        et_ConfirmPassword= findViewById(R.id.etConfirmPassword);
+        et_EmailAddress= findViewById(R.id.etEmailAddress);
+        et_CellphoneNum = findViewById(R.id.etCellphoneNumber);
+        tv_login = findViewById(R.id.login);
+        btn_Register= findViewById(R.id.btnRegister);
+
+        policyCheck = findViewById(R.id.chkPolicy);
+
+
+        tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent loginIntent = new Intent(Register.this, Login.class);
+                startActivity(loginIntent);
+            }
+        });
 
-                next();
 
+        //Real-time validation
+        //ID Number
+        et_IDNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(et_IDNumber.getText().length() > 0){
+                    valid = IDNumberValidate();
+                }
+                else {
+                    et_IDNumber.setError(null);
+                }
 
             }
         });
-        builder= new AlertDialog.Builder(Register.this);
 
+
+        //Cellphone number
+        et_CellphoneNum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(et_CellphoneNum.getText().length() > 0){
+                    valid = CellphoneValidate();
+                }
+                else {
+                    et_CellphoneNum.setError(null);
+                }
+            }
+        });
+
+        //Email address
+        et_EmailAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(et_EmailAddress.getText().length() > 0){
+                    valid = EmailAddressValidate();
+                }
+                else {
+                    et_EmailAddress.setError(null);
+                }
+            }
+        });
+
+        //New password
+        et_EnterPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(et_ConfirmPassword.getText().length() > 0){
+                    valid = NewPasswordValidate();
+                }
+                else {
+                    et_EnterPassword.setError(null);
+                }
+            }
+        });
+
+        //Confirm password
+        et_ConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(et_ConfirmPassword.getText().length() > 0){
+                    valid = ConfirmPasswordValidate();
+                }
+                else {
+                    et_ConfirmPassword.setError(null);
+                }
+            }
+        });
 
     }
 
-    public void next() {
-        initialize();
-        if (!Validate()) {
-            Toast.makeText(this, "Cannot Proceed Data Missing Or Invalid Data Input", Toast.LENGTH_SHORT).show();
-        } else {
-            nextSuccess();
+
+
+    //Validate methods
+
+
+    private boolean IDNumberValidate() {
+        idNumber = et_IDNumber.getText().toString();
+        valid = true;
+
+        if(idNumber.isEmpty() || idNumber.length() != 13){
+            et_IDNumber.setError("Please enter a valid ID number");
+            valid = false;
         }
+
+        return valid;
     }
 
-    public  void  nextSuccess(){
-        SharedPreferences preferences = getSharedPreferences("MYP",MODE_PRIVATE);
-        IDnum=idNum.getText().toString();
-        newPassword=enterPassword.getText().toString();
-        String userReg=preferences.getString(IDnum+cellNo+"data",IDnum+""+cellNo);
-        SharedPreferences.Editor editor=preferences.edit();
-        editor.putString(IDnum + "data", IDnum);
-        editor.putString(cellNo + "data", cellNo);
-        editor.putString("display", userReg);
-        editor.commit();
+    private boolean EmailAddressValidate() {
+        emailAddress = et_EmailAddress.getText().toString();
+        valid = true;
 
-        Intent intent = new Intent(this, Slide_one.class);
-        intent.putExtra("IDNumber", IDnum);
-        intent.putExtra("Password", newPassword);
-        intent.putExtra("Email_Address", emailP);
-        intent.putExtra("CellNumber", cellNo);
-        intent.putExtra("ConfirmPassword", cPassword);
-        startActivity(intent);
-
-
-    }
-    //Validate user input
-    public boolean Validate() {
-        boolean valid = true;
-        if (IDnum.isEmpty() || IDnum.length() > 13) {
-            idNum.setError("Please Enter Valid ID Number");
-            valid = false;
-        }
-
-        if (cellNo.isEmpty() || cellNo.length() > 10) {
-            contactNo.setError("Please Enter Valid CellNumber");
-            valid = false;
-        }
-
-
-        if (emailP.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailP).matches()) {
-            emailAddress.setError("Please Enter Valid Email Address");
-            valid = false;
-        }
-
-        if (newPassword.isEmpty()) {
-            enterPassword.setError("Please Enter A Password");
-            valid = false;
-        }
-
-        if (!(newPassword.equals(cPassword))) {
-            builder.setTitle("Something Went Wrong...");
-            builder.setMessage("Your passwords are not matching");
-            displayAlert("input_error");
-            valid = false;
-        }
-
-        if (cPassword.isEmpty()) {
-            confirmPassword.setError("Please Enter A Confirm Password");
+        if(emailAddress.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
+            et_EmailAddress.setError("Please enter a valid email address");
             valid = false;
         }
         return valid;
     }
 
-    public void initialize() {
-        //*********Passing data to new variables************
-        IDnum = idNum.getText().toString().trim();
-        cellNo = contactNo.getText().toString().trim();
-        emailP = emailAddress.getText().toString().trim();
-        newPassword = enterPassword.getText().toString().trim();
-        cPassword = confirmPassword.getText().toString().trim();
+    private boolean CellphoneValidate() {
+        cellphoneNumber = et_CellphoneNum.getText().toString();
+        boolean valid = true;
+
+        if(cellphoneNumber.isEmpty() || cellphoneNumber.length() != 10){
+            et_CellphoneNum.setError("Please enter a valid cellphone number");
+            valid = false;
+        }
+
+        return valid;
     }
 
-    public void displayAlert(final String code) {
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+    private boolean NewPasswordValidate() {
+        newPassword = et_EnterPassword.getText().toString();
+        String passStrength = strengthView.getText().toString();
+        valid = true;
 
-                if (code.equals("input_error")) {
-                    enterPassword.setText("");
-                    confirmPassword.setText("");
-                } else if (code.equals("reg_success")) {
-                    Intent intent = new Intent(Register.this, Login.class);
-                    startActivity(intent);
-                }
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        if(newPassword.isEmpty() || (passStrength.equals("Weak"))){
+            et_EnterPassword.setError("Password should be at least 8 characters, with at least 1 number and 1 special character.");
+            valid = false;
+        }
+        return valid;
+    }
 
+    private boolean ConfirmPasswordValidate() {
+        newPassword = et_EnterPassword.getText().toString();
+        cPassword = et_ConfirmPassword.getText().toString();
+        valid = true;
 
-}
+        if(cPassword.isEmpty() || !(newPassword.equals(cPassword))){
+            et_ConfirmPassword.setError("Passwords entered don't match");
+            valid = false;
+        }
+        return valid;
+    }
+
+    //PASSWORD STRENGTH CHECKER
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+        updatePasswordStrengthView(charSequence.toString());
+    }
+
+    private void updatePasswordStrengthView(String password) {
+
+        progressBar = findViewById(R.id.progressBar);
+        strengthView = findViewById(R.id.password_strength);
+        if(TextView.VISIBLE != strengthView.getVisibility()){
+            return;
+        }
+        if(password.isEmpty()){
+            strengthView.setText("");
+            progressBar.setProgress(0);
+            return;
+        }
+
+        PasswordStrength strength = PasswordStrength.calculateStrength(password);
+        strengthView.setText(strength.getText(this));
+        strengthView.setTextColor(strength.getColor());
+
+        progressBar.getProgressDrawable().setColorFilter(strength.getColor(), PorterDuff.Mode.SRC_IN);
+        if(strength.getText(this).equals("Weak")){
+            progressBar.setProgress(25);
+        }
+        else if(strength.getText(this).equals("Medium")){
+                progressBar.setProgress(50);
+        }
+        else if(strength.getText(this).equals("Strong")){
+            progressBar.setProgress(75);
+        }
+        else {
+            progressBar.setProgress(100);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
+
+    public void OnCheck(View view){
+        if(policyCheck.isChecked()){
+            checked = true;
+        }
+        else {
+            checked = false;
+        }
+    }
+
+    public void OnRegister(View view) {
+
+        if(!checked){
+            policyCheck.setError("Please confirm you have read the privacy policy and the terms and conditions");
+        }
+        else if(checked){
+            policyCheck.setError(null);
+        }
+        if(valid && checked){
+            Intent intent = new Intent(this, Slide_One.class);
+            startActivity(intent);
+        }
+        else {
+            //Make sure you've entered all fields correctly
+        }
+
+    }
+
 }

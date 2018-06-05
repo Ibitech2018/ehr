@@ -24,18 +24,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter> -->
         </activity>
-        <activity android:name=".Slide_one" />
-        <activity android:name=".Slide_two" />
-        <activity android:name=".Register" />
-        <activity android:name=".Login"
-            android:screenOrientation="locked"/>
-
-        <activity android:name=".Dashboard" >
+        <activity android:name=".IntroSlide">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Slide_One">
+
+        </activity>
+        <activity android:name=".Slide_two" />
+        <activity android:name=".Register">
+        </activity>
+        <activity android:name=".Login"
+            android:screenOrientation="locked"/>
+
+        <activity android:name=".Dashboard" >
+
         </activity>
 
     </application>
