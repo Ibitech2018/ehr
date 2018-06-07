@@ -3,12 +3,12 @@ package com.divide.ibitech.divide_ibitech;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class IntroSlide extends Activity {
+public class IntroActivity extends Activity {
 
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
@@ -30,18 +30,24 @@ public class IntroSlide extends Activity {
     private Button btnSkip, btnNext;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.slide_intro);
+        setContentView(R.layout.activity_intro);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        SharedPreferences sharedPreferences = getSharedPreferences("PREFS",MODE_PRIVATE);
+        if(sharedPreferences.getInt("INTRO",0) == 1){
+//            startActivity(new Intent(IntroActivity.this,Dashboard.class));
+//            finish();
+        }
+
+        viewPager =  findViewById(R.id.view_pager);
+        dotsLayout =  findViewById(R.id.layoutDots);
+        btnSkip =  findViewById(R.id.btn_skip);
+        btnNext =  findViewById(R.id.btn_next);
 
         layouts = new int[]{
                 R.layout.activity_slide_one,
@@ -55,13 +61,27 @@ public class IntroSlide extends Activity {
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
 
+
     }
 
-    public void btnSkipClick(View v) {
+    Register register;
+    //Constructor
+    public IntroActivity(Register reg){
+        register = reg;
+    }
+
+    public IntroActivity(){
+
+    }
+
+    public  void btnSkipClick(View v)
+    {
+
         launchHomeScreen();
     }
 
-    public void btnNextClick(View v) {
+    public  void btnNextClick(View v)
+    {
         // checking for last page
         // if last page home screen will be launched
         int current = getItem(1);
@@ -69,6 +89,7 @@ public class IntroSlide extends Activity {
             // move to next screen
             viewPager.setCurrentItem(current);
         } else {
+            //METHOD TO INSERT USER REGISTRATION INTO DATABASE
             launchHomeScreen();
         }
     }
@@ -102,7 +123,6 @@ public class IntroSlide extends Activity {
         }
     };
 
-
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
 
@@ -124,12 +144,21 @@ public class IntroSlide extends Activity {
     }
 
     private void launchHomeScreen() {
-        startActivity(new Intent(this, Slide_One.class));
+
+        SharedPreferences sharedPreferences = getSharedPreferences("PREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+
+        editor = sharedPreferences.edit();
+        editor.putInt("INTRO",1);
+        editor.apply();
+
+
+        startActivity(new Intent(this, Dashboard.class));
         finish();
     }
 
 
-    class ViewPagerAdapter extends PagerAdapter {
+    public class ViewPagerAdapter extends PagerAdapter {
         private LayoutInflater layoutInflater;
 
 
@@ -164,5 +193,4 @@ public class IntroSlide extends Activity {
             container.removeView(view);
         }
     }
-
 }

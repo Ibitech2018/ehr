@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#295852"
-    tools:context="com.divide.ibitech.divide_ibitech.Slide_two">
+    tools:context="com.divide.ibitech.divide_ibitech.SlideTwo">
 
     <RelativeLayout
         android:layout_marginStart="25dp"

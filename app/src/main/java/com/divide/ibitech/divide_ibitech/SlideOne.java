@@ -1,29 +1,23 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Slide_One extends AppCompatActivity {
+public class SlideOne extends AppCompatActivity {
     // Variable to store  data from previous activity//String userID,userCellNo,userMail,userPass,userCPassword;
     //End
-    Button btn_NextSlide;
     EditText et_Name,et_Surname,et_DateofBirth,et_Address,et_Suburb,et_City,et_PostalCode;
     String name,surname,dob,gender,address,suburb,city,code;
-    AlertDialog.Builder builder;
    // String url="http://sict-iis.nmmu.ac.za/Ibitech/app/Register.php";
-    ImageView top;
-    Boolean valid;
+    Boolean validFName = false, validSurname = false, validDOB = false;
     RadioGroup rg_Gender;
     RadioButton rb_Gender;
 
@@ -41,16 +35,9 @@ public class Slide_One extends AppCompatActivity {
         et_City = findViewById(R.id.City);
         et_PostalCode = findViewById(R.id.postalCode);
 
-        btn_NextSlide = findViewById(R.id.btnNext);
+        rg_Gender = findViewById(R.id.rgGender);
 
-        btn_NextSlide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent slideTwoIntent = new Intent(Slide_One.this, Slide_two.class);
-                startActivity(slideTwoIntent);
 
-            }
-        });
 
         //Real-time validation
         //First name
@@ -58,7 +45,7 @@ public class Slide_One extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_Name.getText().length() > 0){
-                    valid = FirstNameValidate();
+                    validFName = FirstNameValidate();
                 }
                 else {
                     et_Name.setError(null);
@@ -71,7 +58,7 @@ public class Slide_One extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_Surname.getText().length() > 0){
-                    valid = SurnameValidate();
+                    validSurname = SurnameValidate();
                 }
                 else {
                     et_Surname.setError(null);
@@ -84,13 +71,40 @@ public class Slide_One extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_DateofBirth.getText().length() > 0){
-                    valid = DOBValidate();
+                    validDOB = DOBValidate();
                 }
                 else {
                     et_DateofBirth.setError(null);
                 }
             }
         });
+
+        rg_Gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                i = rg_Gender.getCheckedRadioButtonId();
+                rb_Gender = findViewById(i);
+
+                if(rb_Gender.getText() == "Female"){
+                    gender = "Female";
+                }
+                else {
+                    gender = "Male";
+                }
+            }
+        });
+
+        //Should be under next in IntroActivity ???
+        if(!rg_Gender.isSelected()){
+            rb_Gender.setError("Please select your gender");
+        }
+        if((validFName)&&(validSurname)&&(validDOB) && rg_Gender.isSelected()){
+            saveSlideOneInfo();
+        }
+        else {
+            Toast.makeText(this,"Please enter all necessary details",Toast.LENGTH_LONG).show();
+        }
+
 
         //retrive  dara from 1st form
       //  userID = (getIntent().getStringExtra("IDNumber"));
@@ -114,54 +128,52 @@ public class Slide_One extends AppCompatActivity {
 //            }
 //        });
 
+    }
 
-        builder = new AlertDialog.Builder(Slide_One.this);
+    private void saveSlideOneInfo() {
+        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("pFirstName",et_Name.getText().toString());
+        editor.putString("pSurname",et_Surname.getText().toString());
+        editor.putString("pDOB",et_DateofBirth.getText().toString());
+        editor.putString("pGender", gender);
+        editor.putString("pAddress",et_Address.getText().toString());
+        editor.putString("pSuburb",et_Suburb.getText().toString());
+        editor.putString("pCity",et_City.getText().toString());
+        editor.putString("pPostalCode",et_PostalCode.getText().toString());
+        editor.apply();
     }
 
     //Validate Methods
     private Boolean FirstNameValidate() {
         name = et_Name.getText().toString();
-        valid = true;
+        validFName = true;
 
         if(name.isEmpty() || name.length() < 2){
             et_Name.setError("Please enter your name");
-            valid = false;
+            validFName = false;
         }
-        return valid;
+        return validFName;
     }
     private Boolean SurnameValidate() {
         surname = et_Surname.getText().toString();
-        valid = true;
+        validSurname = true;
 
         if(surname.isEmpty() || surname.length() < 2){
             et_Surname.setError("Please enter your surname");
-            valid = false;
+            validSurname = false;
         }
-        return valid;
+        return validSurname;
     }
     private Boolean DOBValidate() {
         dob = et_DateofBirth.getText().toString();
-        valid = true;
+        validDOB = true;
 
         if(dob.isEmpty()){
             et_DateofBirth.setError("Please enter your surname");
-            valid = false;
+            validDOB = false;
         }
-        return valid;
-    }
-
-    //Radio button
-    public void OnRbClick(View view) {
-        int radioID = rg_Gender.getCheckedRadioButtonId();
-        rb_Gender = findViewById(radioID);
-
-        if(rb_Gender.getText() == "Female"){
-            gender = "Female";
-        }
-        else {
-            gender = "Male";
-        }
-
+        return validDOB;
     }
 
 
@@ -185,7 +197,7 @@ public class Slide_One extends AppCompatActivity {
         editor.putString("display", userReg);
         editor.commit();
 
-        Intent intent = new Intent(this, Slide_two.class);
+        Intent intent = new Intent(this, SlideTwo.class);
         intent.putExtra("Firstname", name);
         intent.putExtra("Surname", surname);
         intent.putExtra("DateOfBirth", date);
@@ -266,7 +278,7 @@ public class Slide_One extends AppCompatActivity {
                     et_PostalCode.setText("");
 
                 } else if (code.equals("reg_success")) {
-                    Intent intent = new Intent(Slide_One.this, Login.class);
+                    Intent intent = new Intent(SlideOne.this, Login.class);
                     startActivity(intent);
                 }
             }

@@ -1,6 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,21 +12,24 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
-public class Register extends AppCompatActivity implements TextWatcher {
+public class  Register extends AppCompatActivity implements TextWatcher {
 
     AlertDialog.Builder builder;
     String idNumber ,newPassword,cPassword,emailAddress,cellphoneNumber;
     EditText et_IDNumber, et_EnterPassword, et_ConfirmPassword, et_EmailAddress, et_CellphoneNum;
     Button btn_Register;
     TextView tv_login,strengthView;
+    String passStrength;
     ProgressBar progressBar;
-    Boolean valid = false,checked = false;
+    Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
     CheckBox policyCheck;
 
 
@@ -57,6 +61,36 @@ public class Register extends AppCompatActivity implements TextWatcher {
             }
         });
 
+        btn_Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                        if(!checked){
+                    policyCheck.setError("Please confirm you have read the privacy policy and the terms and conditions");
+                }
+                if((validID) && (validCell) && (validEmail) && (validCpass) && (checked)) {  //validNewPass is not included
+
+                    saveRegisterInfo();
+                    startActivity(new Intent(Register.this, IntroActivity.class));
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please ensure all fields are filled!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        policyCheck = findViewById(R.id.chkPolicy);
+
+        policyCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checked = false;
+                if(policyCheck.isChecked()){
+                    checked = true;
+                    policyCheck.setError(null);
+                }
+            }
+        });
 
         //Real-time validation
         //ID Number
@@ -64,7 +98,7 @@ public class Register extends AppCompatActivity implements TextWatcher {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_IDNumber.getText().length() > 0){
-                    valid = IDNumberValidate();
+                    validID = IDNumberValidate();
                 }
                 else {
                     et_IDNumber.setError(null);
@@ -79,7 +113,7 @@ public class Register extends AppCompatActivity implements TextWatcher {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_CellphoneNum.getText().length() > 0){
-                    valid = CellphoneValidate();
+                    validCell = CellphoneValidate();
                 }
                 else {
                     et_CellphoneNum.setError(null);
@@ -92,7 +126,7 @@ public class Register extends AppCompatActivity implements TextWatcher {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_EmailAddress.getText().length() > 0){
-                    valid = EmailAddressValidate();
+                    validEmail = EmailAddressValidate();
                 }
                 else {
                     et_EmailAddress.setError(null);
@@ -105,7 +139,7 @@ public class Register extends AppCompatActivity implements TextWatcher {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_ConfirmPassword.getText().length() > 0){
-                    valid = NewPasswordValidate();
+                    validNewPass = NewPasswordValidate();
                 }
                 else {
                     et_EnterPassword.setError(null);
@@ -118,7 +152,7 @@ public class Register extends AppCompatActivity implements TextWatcher {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_ConfirmPassword.getText().length() > 0){
-                    valid = ConfirmPasswordValidate();
+                    validCpass = ConfirmPasswordValidate();
                 }
                 else {
                     et_ConfirmPassword.setError(null);
@@ -128,68 +162,102 @@ public class Register extends AppCompatActivity implements TextWatcher {
 
     }
 
+    private void saveRegisterInfo() {
+        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("pIDNumber",et_IDNumber.getText().toString());
+        editor.putString("pCellphoneNum",et_CellphoneNum.getText().toString());
+        editor.putString("pEmailAddress",et_EmailAddress.getText().toString());
+        editor.putString("pPassword",et_EnterPassword.getText().toString());
+        editor.apply();
+
+        Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show(); // To be removed !!!
+
+    }
+
+    SlideOne s1;
+    SlideTwo s2;
+
+    //Constructor
+    public  Register(SlideOne slideOne,SlideTwo slideTwo){
+        s1 = slideOne;
+        s2 = slideTwo;
+    }
+
+    public Register(){
+
+    }
 
 
     //Validate methods
 
-
     private boolean IDNumberValidate() {
         idNumber = et_IDNumber.getText().toString();
-        valid = true;
+        validID = false;
 
         if(idNumber.isEmpty() || idNumber.length() != 13){
             et_IDNumber.setError("Please enter a valid ID number");
-            valid = false;
+        }
+        else {
+            validID = true;
         }
 
-        return valid;
+        return validID;
     }
 
     private boolean EmailAddressValidate() {
         emailAddress = et_EmailAddress.getText().toString();
-        valid = true;
+        validEmail = false;
 
         if(emailAddress.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
             et_EmailAddress.setError("Please enter a valid email address");
-            valid = false;
         }
-        return valid;
+        else {
+            validEmail = true;
+        }
+        return validEmail;
     }
 
     private boolean CellphoneValidate() {
         cellphoneNumber = et_CellphoneNum.getText().toString();
-        boolean valid = true;
+        validCell = false;
 
         if(cellphoneNumber.isEmpty() || cellphoneNumber.length() != 10){
             et_CellphoneNum.setError("Please enter a valid cellphone number");
-            valid = false;
+        }
+        else {
+            validCell = true;
         }
 
-        return valid;
+        return validCell;
     }
 
     private boolean NewPasswordValidate() {
         newPassword = et_EnterPassword.getText().toString();
-        String passStrength = strengthView.getText().toString();
-        valid = true;
+        passStrength = strengthView.getText().toString();
+        validNewPass = false;
 
         if(newPassword.isEmpty() || (passStrength.equals("Weak"))){
             et_EnterPassword.setError("Password should be at least 8 characters, with at least 1 number and 1 special character.");
-            valid = false;
         }
-        return valid;
+        else {
+            validNewPass = true;
+        }
+        return validNewPass;
     }
 
     private boolean ConfirmPasswordValidate() {
         newPassword = et_EnterPassword.getText().toString();
         cPassword = et_ConfirmPassword.getText().toString();
-        valid = true;
+        validCpass = false;
 
         if(cPassword.isEmpty() || !(newPassword.equals(cPassword))){
             et_ConfirmPassword.setError("Passwords entered don't match");
-            valid = false;
         }
-        return valid;
+        else {
+            validCpass = true;
+        }
+        return validCpass;
     }
 
     //PASSWORD STRENGTH CHECKER
@@ -240,31 +308,27 @@ public class Register extends AppCompatActivity implements TextWatcher {
 
     }
 
-    public void OnCheck(View view){
-        if(policyCheck.isChecked()){
-            checked = true;
-        }
-        else {
-            checked = false;
-        }
-    }
+   /* public void OnRegister() {
 
-    public void OnRegister(View view) {
+        String idNumber = et_IDNumber.getText().toString();
+        String cellphoneNum = et_CellphoneNum.getText().toString();
+        String emailAddress = et_EmailAddress.getText().toString();
+        String password = et_EnterPassword.getText().toString();
+        String firstName = s1.name;
+        String surname = s1.surname;
+        String dob = s1.dob;
+        String gender = s1.gender;
+        String address = s1.address;
+        String suburb = s1.suburb;
+        String city = s1.city;
+        String postal = s1.code;
+        Float weight = s2.weight;
+        Float height = s2.height;
+        String type = "register";
 
-        if(!checked){
-            policyCheck.setError("Please confirm you have read the privacy policy and the terms and conditions");
-        }
-        else if(checked){
-            policyCheck.setError(null);
-        }
-        if(valid && checked){
-            Intent intent = new Intent(this, Slide_One.class);
-            startActivity(intent);
-        }
-        else {
-            //Make sure you've entered all fields correctly
-        }
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(type, idNumber, cellphoneNum,emailAddress, password,firstName,surname,dob,gender,address,suburb,city,postal,weight.toString(),height.toString());
 
-    }
+    }*/
 
 }

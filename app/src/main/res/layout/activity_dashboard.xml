@@ -238,7 +238,7 @@
         app:layout_constraintVertical_bias="0.361" />
 
     <TextView
-        android:id="@+id/maternalStatus"
+        android:id="@+id/maritalStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -261,11 +261,11 @@
     <ScrollView
         android:id="@+id/svFunctions"
         android:layout_width="0dp"
-        android:layout_height="339dp"
+        android:layout_height="263dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:fillViewport="true"
         android:fadeScrollbars="false"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -312,10 +312,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlecondition"
+                        android:contentDescription="@string/txtCondition_icon"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/wstethoscope_condition"
-                        android:contentDescription="@string/txtCondition_icon" />
+                        android:src="@drawable/wstethoscope_condition" />
 
 
                     <TextView
@@ -378,10 +378,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlesymptoms"
-                        android:src="@drawable/symptom_icon"
-                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/txtManage_symptoms_icon"
                         android:padding="8dp"
-                        android:contentDescription="@string/txtManage_symptoms_icon" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/symptom_icon" />
 
 
                     <TextView
@@ -444,10 +444,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circledevice"
+                        android:contentDescription="@string/txtDevices_icon"
                         android:padding="8dp"
-                        android:src="@drawable/hearing_aid_devices"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/txtDevices_icon">
+                        android:src="@drawable/hearing_aid_devices">
 
 
                     </ImageView>
@@ -513,10 +513,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circleallergy"
+                        android:contentDescription="@string/txtManage_allergies_icon"
                         android:padding="8dp"
-                        android:src="@drawable/allergy_icon_ed"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/txtManage_allergies_icon" />
+                        android:src="@drawable/allergy_icon_ed" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -578,10 +578,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlecondition"
-                        android:src="@drawable/family_icon"
+                        android:contentDescription="@string/txtNext_of_kin_icon"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/txtNext_of_kin_icon" />
+                        android:src="@drawable/family_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -642,10 +642,10 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlesymptoms"
+                        android:contentDescription="@string/txtMedical_aid_icon"
                         android:padding="8dp"
-                        android:src="@drawable/id_card_icon"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/txtMedical_aid_icon" />
+                        android:src="@drawable/id_card_icon" />
 
 
                     <TextView

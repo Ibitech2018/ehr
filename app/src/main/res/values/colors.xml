@@ -30,11 +30,11 @@
     <color name="materialgreen">#00bfa5</color>
     <color name="pinkAccent">#ff4081</color>
 
-
-
     <color name="active_dots">#fffafa</color>
     <color name="inactive_dots">#83878b</color>
 
+
+    <!-- SLIDER TUTORIAL -->
     <!-- Screens background -->
     <color name="bg_screen1">#b12515</color>
     <color name="bg_screen2">#FFBB00</color>
