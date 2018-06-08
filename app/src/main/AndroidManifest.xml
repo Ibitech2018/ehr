@@ -19,11 +19,11 @@
         android:theme="@style/Theme">
 
         <activity android:name=".Welcome">
-            <!-- <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         <activity android:name=".IntroActivity">
 
@@ -34,12 +34,6 @@
         <activity android:name=".Register"
             android:screenOrientation="locked"
             android:theme="@style/NoActionBarTheme">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
