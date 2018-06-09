@@ -92,7 +92,7 @@ public class SlideTwo extends AppCompatActivity {
 
     }
 
-    private void saveSlideTwoInfo() {
+    public void saveSlideTwoInfo() {
         SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("pMaritalStatus",maritalStatus);

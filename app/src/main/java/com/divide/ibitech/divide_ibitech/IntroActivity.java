@@ -18,6 +18,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class IntroActivity extends Activity {
@@ -28,6 +43,10 @@ public class IntroActivity extends Activity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    private SlideOne slideOne = new SlideOne();
+    private SlideTwo slideTwo = new SlideTwo();
+
+    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/register2.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,22 +80,10 @@ public class IntroActivity extends Activity {
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
 
-
-    }
-
-    Register register;
-    //Constructor
-    public IntroActivity(Register reg){
-        register = reg;
-    }
-
-    public IntroActivity(){
-
     }
 
     public  void btnSkipClick(View v)
     {
-
         launchHomeScreen();
     }
 
@@ -94,18 +101,50 @@ public class IntroActivity extends Activity {
         }
     }
 
+    private void retrievePreferences() {
+
+
+        SharedPreferences userInfo = getSharedPreferences("userInfo",MODE_PRIVATE);
+
+        String userID = userInfo.getString("pIDNumber","");
+        String userCell = userInfo.getString("pCellphoneNum","");
+        String userEmail = userInfo.getString("pEmailAddress","");
+        String userPassword = userInfo.getString("pPassword","");
+
+        String userFName = userInfo.getString("pFirstName","");
+        String userSurname = userInfo.getString("pSurname","");
+        String userDOB = userInfo.getString("pDOB","");
+        String userGender = userInfo.getString("pGender","");
+        String userAddress = userInfo.getString("pAddress","");
+        String userSuburb = userInfo.getString("pSuburb","");
+        String userCity = userInfo.getString("pCity","");
+        String userPostalCode = userInfo.getString("pPostalCode","");
+
+        String userMaritalStatus = userInfo.getString("pMaritalStatus","");
+        String userBloodType = userInfo.getString("pBloodType","");
+        String userWeight = userInfo.getString("pWeight","");
+        String userHeight = userInfo.getString("pHeight","");
+
+        userRegister(userID,userCell,userEmail,userPassword,
+                userFName,userSurname,userDOB,userGender,userAddress,
+                userMaritalStatus,userBloodType,userWeight,userHeight);
+
+
+    }
+
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);
 
-            // changing the next button text 'NEXT' / 'GOT IT'
+            // changing the button text based on page active
             if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
-            } else {
+
+            }
+            else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
@@ -152,9 +191,62 @@ public class IntroActivity extends Activity {
         editor.putInt("INTRO",1);
         editor.apply();
 
+        retrievePreferences();
 
         startActivity(new Intent(this, Dashboard.class));
         finish();
+    }
+
+    private void userRegister(final String userID, final String userCell, final String userEmail, final String userPassword, final String userFName, final String userSurname, final String userDOB, final String userGender, final String userAddress, final String userMaritalStatus, final String userBloodType, final String userWeight, final String userHeight) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("1")) {
+                        Toast.makeText(IntroActivity.this, "Register Success", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(IntroActivity.this, "Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(IntroActivity.this,"Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("id",userID);
+                params.put("cell",userCell);
+                params.put("email",userEmail);
+                params.put("pass",userPassword);
+
+                params.put("fname",userFName);
+                params.put("surname",userSurname);
+                params.put("dob",userDOB);
+                params.put("gender",userGender);
+                params.put("address",userAddress);
+                params.put("status",userMaritalStatus);
+                params.put("bloodtype",userBloodType);
+                params.put("weight",userWeight);
+                params.put("height",userHeight);
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,8 +23,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
 
-    BackgroundWorker(Context ctx){
-        context = ctx;
+    BackgroundWorker(View.OnClickListener ctx){
+        context = (Context) ctx;
     }
 
     @Override

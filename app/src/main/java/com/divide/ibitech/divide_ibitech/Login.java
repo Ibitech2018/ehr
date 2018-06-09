@@ -1,5 +1,6 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.app.VoiceInteractor;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,47 +14,69 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Login extends AppCompatActivity {
 
-        AlertDialog.Builder builder;
         //Declare variables
-        String idNumber, cellphoneNumber, userPassword;
-        Boolean valid;
+        String idNumber, cellphoneNumber;
+        Boolean validID,validCell;
 
         //Define views
         EditText et_IDNumber,et_CellphoneNum,et_Password;
         Button btn_Login;
         TextView tv_NewRegister,tv_ForgotPass,tv_PasswordToggle;
+        ProgressBar pb_loading;
+
+        //Login URL
+        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/login2.php";
+
+        SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Getting id by from xml
         et_IDNumber = findViewById(R.id.etIDNumber);
         et_CellphoneNum =  findViewById(R.id.etCellphoneNum);
         et_Password =  findViewById(R.id.etPassword);
         btn_Login = findViewById(R.id.btnLogin);
         tv_NewRegister = findViewById(R.id.tvNewRegister);
         tv_ForgotPass = findViewById(R.id.tvForgotPass);
+        pb_loading = findViewById(R.id.pbLoading);
 
-        //Real-time validation
+        sessionManager = new SessionManager(this);
+
+        /**Real-time validation**/
         //ID Number
         et_IDNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_IDNumber.getText().length() > 0){
-                    IDNumberValidate();
+                    validID = IDNumberValidate();
                 }
                 else{
                     et_IDNumber.setError(null);
                 }
-
 
             }
         });
@@ -63,7 +86,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(et_CellphoneNum.getText().length() > 0){
-                    CellphoneValidate();
+                    validCell = CellphoneValidate();
                 }
                 else {
                     et_CellphoneNum.setError(null);
@@ -116,21 +139,122 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //Register Intent
         tv_NewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(Login.this,Register.class);
-                Login.this.startActivity(registerIntent);
+                startActivity(new Intent(Login.this,Register.class));
             }
         });
 
 
+        //Login button
+        btn_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if(!(validID) && !(validCell)) {
+                    Toast.makeText(getApplicationContext(), "Please ensure all fields are correctly filled!",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    String id = et_IDNumber.getText().toString();
+                    String cell = et_CellphoneNum.getText().toString();
+                    String pass = et_Password.getText().toString();
+                    UserLogin(id,cell,pass);
+                }
+            }
+        });
+
+    }
+
+    private void UserLogin(final String id, final String cell, final String pass) {
+        pb_loading.setVisibility(View.VISIBLE);
+        btn_Login.setVisibility(View.GONE);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("login");
+
+                    if (success.equals("1")) {
+                        String idNo = "", cellNo = "";
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            JSONObject object = jsonArray.getJSONObject(i);
+
+                            idNo = object.getString("id").trim();
+                            cellNo = object.getString("cell").trim();
+
+                            //sessionManager.createSession(idNo,cellNo);
+
+                        }
+                        Toast.makeText(Login.this, "Success Login.\nYour ID: " + idNo + "\nYour Cell: " + cellNo, Toast.LENGTH_LONG).show();
+                        pb_loading.setVisibility(View.GONE);
+//                        createSession(patientID, patientCell,patientPass);
+                    }
+                    else {
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Login.setVisibility(View.VISIBLE);
+                        Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                    }
+
+//                    builder.setTitle("Server Response");
+//                    builder.setMessage(message);
+//                    displayAlert(code);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    pb_loading.setVisibility(View.GONE);
+                    btn_Login.setVisibility(View.VISIBLE);
+                    Toast.makeText(Login.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pb_loading.setVisibility(View.GONE);
+                btn_Login.setVisibility(View.VISIBLE);
+                Toast.makeText(Login.this,"MJError "+error.toString(),Toast.LENGTH_LONG).show();
+            }
+        })
+    {
+            @Override
+            protected Map<String,String> getParams() throws AuthFailureError{
+                Map<String,String> params = new HashMap<>();
+
+                params.put("id",id);
+                params.put("cell",cell);
+                params.put("pass",pass);
+                return params;
+            }
+        };
+        //Singleton.getInstance(Login.this).addToRequestQue(stringRequest);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
+    private void createSession(String patientID, String patientCell,String patientPass) {
+        SharedPreferences preferences = getSharedPreferences("MYPREFS",MODE_PRIVATE);
+
+        String patientIDSession = preferences.getString(patientID + "data",patientID);
+        String patientCellSession = preferences.getString(patientCell + "data",patientCell);
+        String patientPassSession = preferences.getString(patientPass + "data",patientPass);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("patientID",patientIDSession);
+        editor.putString("patientCell",patientCellSession);
+        editor.putString("patientPass",patientPassSession);
+
+        editor.apply();
     }
 
     private boolean IDNumberValidate() {
         idNumber = et_IDNumber.getText().toString();
-        valid = true;
+         boolean valid = true;
 
         if(idNumber.isEmpty() || idNumber.length() != 13){
             et_IDNumber.setError("Please enter a valid ID number");
@@ -149,24 +273,6 @@ public class Login extends AppCompatActivity {
         }
 
         return valid;
-    }
-
-
-
-    public void OnLogin(View view) {
-
-        if(valid) {
-
-            String idNumber = et_IDNumber.getText().toString();
-            String cellphoneNum = et_CellphoneNum.getText().toString();
-            String password = et_Password.getText().toString();
-            String type = "login";
-
-            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(type, idNumber, cellphoneNum, password);
-        }
-        //else
-
     }
 
 }

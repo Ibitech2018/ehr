@@ -18,7 +18,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class  Register extends AppCompatActivity implements TextWatcher {
 
@@ -31,7 +44,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     ProgressBar progressBar;
     Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
     CheckBox policyCheck;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +174,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
     }
 
+
     private void saveRegisterInfo() {
         SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -172,19 +185,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         editor.apply();
 
         Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show(); // To be removed !!!
-
-    }
-
-    SlideOne s1;
-    SlideTwo s2;
-
-    //Constructor
-    public  Register(SlideOne slideOne,SlideTwo slideTwo){
-        s1 = slideOne;
-        s2 = slideTwo;
-    }
-
-    public Register(){
 
     }
 
@@ -307,28 +307,5 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     public void afterTextChanged(Editable editable) {
 
     }
-
-   /* public void OnRegister() {
-
-        String idNumber = et_IDNumber.getText().toString();
-        String cellphoneNum = et_CellphoneNum.getText().toString();
-        String emailAddress = et_EmailAddress.getText().toString();
-        String password = et_EnterPassword.getText().toString();
-        String firstName = s1.name;
-        String surname = s1.surname;
-        String dob = s1.dob;
-        String gender = s1.gender;
-        String address = s1.address;
-        String suburb = s1.suburb;
-        String city = s1.city;
-        String postal = s1.code;
-        Float weight = s2.weight;
-        Float height = s2.height;
-        String type = "register";
-
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, idNumber, cellphoneNum,emailAddress, password,firstName,surname,dob,gender,address,suburb,city,postal,weight.toString(),height.toString());
-
-    }*/
 
 }

@@ -42,10 +42,9 @@
             android:layout_marginTop="50dp"
             android:fontFamily="cursive"
             android:text="@string/be_your_own_patient"
-            android:textColor="@color/endblue"
+            android:textColor="@color/starBlue"
             android:textAlignment="center"
-            android:textSize="32sp"
-            tools:ignore="UnusedAttribute" />
+            android:textSize="30sp" />
 
     </LinearLayout>
 
@@ -76,8 +75,6 @@
             android:background="@drawable/secondarybuttonstyle"
             android:text="@string/txtNewRegister"
             android:textColor="#fff"
-            android:textSize="16sp"
-            android:padding="8dp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -91,8 +88,6 @@
             android:background="@drawable/buttonstyle"
             android:text="@string/txtLogin"
             android:textColor="#fff"
-            android:padding="8dp"
-            android:textSize="16sp"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>

@@ -10,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.HashMap;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -21,11 +24,19 @@ public class Dashboard extends AppCompatActivity {
     String fullName, bloodType,address,gender,maritalStatus;
     Integer age;
     ImageView img_ProfilePic;
+    Button btn_Logout;
+
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+
+
 
         tv_FullName = findViewById(R.id.tvName);
         tv_Age = findViewById(R.id.age);
@@ -35,6 +46,22 @@ public class Dashboard extends AppCompatActivity {
         tv_MaritalStatus = findViewById(R.id.maritalStatus);
 
         img_ProfilePic = findViewById(R.id.imgProfilePic);
+
+        btn_Logout = findViewById(R.id.btnLogout);
+
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        String mName = user.get(sessionManager.NAME);
+        //String mEmail = user.get(sessionManager.EMAIL);
+
+        tv_FullName.setText(mName);
+        //more preferences setText ...
+
+        btn_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.logout();
+            }
+        });
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.aya);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
