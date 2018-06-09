@@ -55,6 +55,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sessionManager = new SessionManager(this);
+
         et_IDNumber = findViewById(R.id.etIDNumber);
         et_CellphoneNum =  findViewById(R.id.etCellphoneNum);
         et_Password =  findViewById(R.id.etPassword);
@@ -63,7 +65,6 @@ public class Login extends AppCompatActivity {
         tv_ForgotPass = findViewById(R.id.tvForgotPass);
         pb_loading = findViewById(R.id.pbLoading);
 
-        sessionManager = new SessionManager(this);
 
         /**Real-time validation**/
         //ID Number
@@ -180,19 +181,26 @@ public class Login extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     if (success.equals("1")) {
-                        String idNo = "", cellNo = "";
+                        String name = "", surname = "", age, bloodtype,gender,status,address;
                         for (int i = 0; i < jsonArray.length(); i++) {
 
                             JSONObject object = jsonArray.getJSONObject(i);
 
-                            idNo = object.getString("id").trim();
-                            cellNo = object.getString("cell").trim();
+                            name = object.getString("name").trim();
+                            surname = object.getString("surname").trim();
+                            age = object.getString("age").trim();
+                            bloodtype = object.getString("bloodtype").trim();
+                            gender = object.getString("gender").trim();
+                            status = object.getString("status").trim();
+                            address = object.getString("address").trim();
 
-                            //sessionManager.createSession(idNo,cellNo);
+                            sessionManager.createSession(name,surname,age,bloodtype,gender,status,address);
 
                         }
-                        Toast.makeText(Login.this, "Success Login.\nYour ID: " + idNo + "\nYour Cell: " + cellNo, Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Success Login.\nYour Name: " + name + "\nYour Surname: " + surname, Toast.LENGTH_LONG).show();
                         pb_loading.setVisibility(View.GONE);
+                        btn_Login.setVisibility(View.VISIBLE);
+                        startActivity(new Intent(Login.this,Dashboard.class));
 //                        createSession(patientID, patientCell,patientPass);
                     }
                     else {

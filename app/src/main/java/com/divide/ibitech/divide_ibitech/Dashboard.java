@@ -21,7 +21,6 @@ import java.util.HashMap;
 public class Dashboard extends AppCompatActivity {
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
-    String fullName, bloodType,address,gender,maritalStatus;
     Integer age;
     ImageView img_ProfilePic;
     Button btn_Logout;
@@ -36,8 +35,6 @@ public class Dashboard extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 
-
-
         tv_FullName = findViewById(R.id.tvName);
         tv_Age = findViewById(R.id.age);
         tv_BloodType = findViewById(R.id.bloodType);
@@ -50,11 +47,20 @@ public class Dashboard extends AppCompatActivity {
         btn_Logout = findViewById(R.id.btnLogout);
 
         HashMap<String,String> user = sessionManager.getUserDetails();
-        String mName = user.get(sessionManager.NAME);
-        //String mEmail = user.get(sessionManager.EMAIL);
+        String sName = user.get(sessionManager.NAME);
+        String sSurname = user.get(sessionManager.SURNAME);
+        String sAge = user.get(sessionManager.AGE);
+        String sBloodType = user.get(sessionManager.BLOODTYPE);
+        String sGender = user.get(sessionManager.GENDER);
+        String sStatus = user.get(sessionManager.STATUS);
+        String sAddress = user.get(sessionManager.ADDRESS);
 
-        tv_FullName.setText(mName);
-        //more preferences setText ...
+        tv_FullName.setText(sName + " " + sSurname);
+        tv_Age.setText(sAge);
+        tv_BloodType.setText(sBloodType);
+        tv_Gender.setText(sGender);;
+        tv_MaritalStatus.setText(sStatus);
+        tv_Address.setText(sAddress);
 
         btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,22 +75,22 @@ public class Dashboard extends AppCompatActivity {
         img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
         //Should it be in IntroActivity ????
-        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+/*        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
         fullName = preferences.getString("pFirstName" + " " + "pSurname","");
-        //age
+
         bloodType = preferences.getString("pBloodType","");
         address = preferences.getString("pAddress","");
         gender = preferences.getString("pGender","");
-        maritalStatus = preferences.getString("pMaritalStatus","");
+        maritalStatus = preferences.getString("pMaritalStatus","");*/
 
 
-        if(fullName.isEmpty() && bloodType.isEmpty() && address.isEmpty() && gender.isEmpty() && maritalStatus.isEmpty()){ //age is not included
+     /*   if(fullName.isEmpty() && bloodType.isEmpty() && address.isEmpty() && gender.isEmpty() && maritalStatus.isEmpty()){ //age is not included
             tv_FullName.setText(fullName);
             //tv_Age.setText(age);
             tv_BloodType.setText(bloodType);
             tv_Address.setText(address);
             tv_Gender.setText(gender);
             tv_MaritalStatus.setText(maritalStatus);
-        }
+        }*/
     }
 }

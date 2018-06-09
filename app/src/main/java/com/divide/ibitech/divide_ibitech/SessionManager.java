@@ -15,12 +15,12 @@ public class SessionManager {
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String NAME = "NAME";
-    public static final String SURNAME = "EMAIL";
-    public static final String AGE = "EMAIL";
-    public static final String BLOODTYPE = "EMAIL";
-    public static final String GENDER = "EMAIL";
-    public static final String STATUS = "EMAIL";
-    public static final String ADDRESS = "EMAIL";
+    public static final String SURNAME = "SURNAME";
+    public static final String AGE = "AGE";
+    public static final String BLOODTYPE = "BLOODTYPE";
+    public static final String GENDER = "GENDER";
+    public static final String STATUS = "STATUS";
+    public static final String ADDRESS = "ADDRESS";
 
 
     public SessionManager(Context context){
@@ -58,7 +58,12 @@ public class SessionManager {
     public HashMap<String,String>getUserDetails(){
         HashMap<String,String> user = new HashMap<>();
         user.put(NAME,sharedPreferences.getString(NAME,null));
-        //user.put(EMAIL,sharedPreferences.getString(EMAIL,null));
+        user.put(SURNAME,sharedPreferences.getString(SURNAME,null));
+        user.put(AGE,sharedPreferences.getString(AGE,null));
+        user.put(BLOODTYPE,sharedPreferences.getString(BLOODTYPE,null));
+        user.put(GENDER,sharedPreferences.getString(GENDER,null));
+        user.put(STATUS,sharedPreferences.getString(STATUS,null));
+        user.put(ADDRESS,sharedPreferences.getString(ADDRESS,null));
         return user;
     }
 
@@ -66,6 +71,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
         Intent i = new Intent(context,Login.class);
+        context.startActivity(i);
         ((Dashboard) context).finish();
     }
 }
