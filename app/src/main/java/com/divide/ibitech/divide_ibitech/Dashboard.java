@@ -21,7 +21,6 @@ import java.util.HashMap;
 public class Dashboard extends AppCompatActivity {
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
-    Integer age;
     ImageView img_ProfilePic;
     Button btn_Logout;
 
@@ -58,7 +57,7 @@ public class Dashboard extends AppCompatActivity {
         tv_FullName.setText(sName + " " + sSurname);
         tv_Age.setText(sAge);
         tv_BloodType.setText(sBloodType);
-        tv_Gender.setText(sGender);;
+        tv_Gender.setText(sGender);
         tv_MaritalStatus.setText(sStatus);
         tv_Address.setText(sAddress);
 
@@ -74,23 +73,5 @@ public class Dashboard extends AppCompatActivity {
         roundedBitmapDrawable.setCircular(true);
         img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
-        //Should it be in IntroActivity ????
-/*        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
-        fullName = preferences.getString("pFirstName" + " " + "pSurname","");
-
-        bloodType = preferences.getString("pBloodType","");
-        address = preferences.getString("pAddress","");
-        gender = preferences.getString("pGender","");
-        maritalStatus = preferences.getString("pMaritalStatus","");*/
-
-
-     /*   if(fullName.isEmpty() && bloodType.isEmpty() && address.isEmpty() && gender.isEmpty() && maritalStatus.isEmpty()){ //age is not included
-            tv_FullName.setText(fullName);
-            //tv_Age.setText(age);
-            tv_BloodType.setText(bloodType);
-            tv_Address.setText(address);
-            tv_Gender.setText(gender);
-            tv_MaritalStatus.setText(maritalStatus);
-        }*/
     }
 }

@@ -12,6 +12,7 @@ public class SessionManager {
     public Context context;
     int PRIVATE_MODE = 0;
 
+    //For Login
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String NAME = "NAME";
@@ -27,6 +28,7 @@ public class SessionManager {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(PREF_NAME,PRIVATE_MODE);
         editor = sharedPreferences.edit();
+        editor.apply();
     }
 
     public void createSession(String name, String surname,String age, String bloodtype,

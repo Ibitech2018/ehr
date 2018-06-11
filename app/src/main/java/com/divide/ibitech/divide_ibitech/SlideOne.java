@@ -1,10 +1,12 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -12,14 +14,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class SlideOne extends AppCompatActivity {
-    // Variable to store  data from previous activity//String userID,userCellNo,userMail,userPass,userCPassword;
-    //End
+
     EditText et_Name,et_Surname,et_DateofBirth,et_Address,et_Suburb,et_City,et_PostalCode;
     String name,surname,dob,gender,address,suburb,city,code;
-   // String url="http://sict-iis.nmmu.ac.za/Ibitech/app/Register.php";
-    Boolean validFName = false, validSurname = false, validDOB = false;
+    Boolean validFName = false, validSurname = false, validDOB = false,selected = false;
     RadioGroup rg_Gender;
     RadioButton rb_Gender;
+    Button btn_NextSlide;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,8 @@ public class SlideOne extends AppCompatActivity {
         et_PostalCode = findViewById(R.id.postalCode);
 
         rg_Gender = findViewById(R.id.rgGender);
+
+        btn_NextSlide = findViewById(R.id.btnNextSlide);
 
 
 
@@ -84,9 +87,11 @@ public class SlideOne extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 i = rg_Gender.getCheckedRadioButtonId();
                 rb_Gender = findViewById(i);
+                selected = true;
 
                 if(rb_Gender.getText() == "Female"){
                     gender = "Female";
+
                 }
                 else {
                     gender = "Male";
@@ -94,35 +99,27 @@ public class SlideOne extends AppCompatActivity {
             }
         });
 
-        //Should be under next in IntroActivity ???
-        if(!rg_Gender.isSelected()){
-            rb_Gender.setError("Please select your gender");
-        }
-        if((validFName)&&(validSurname)&&(validDOB) && rg_Gender.isSelected()){
+        btn_NextSlide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                address = et_Address.getText().toString();
+                suburb = et_Suburb.getText().toString();
+                city = et_City.getText().toString();
+                code = et_PostalCode.getText().toString();
+                if((validFName) && (validSurname) &&  (validDOB) && (selected)){
+                    savePreferences();
+                    startActivity(new Intent(SlideOne.this,SlideTwo.class));
+                }
+                else {
+                    Toast.makeText(SlideOne.this,"Please ensure you've entered all necessary details",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
-        }
-        else {
-            Toast.makeText(this,"Please enter all necessary details",Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    private void saveSlideOneInfo() {
-        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("pFirstName",et_Name.getText().toString());
-        editor.putString("pSurname",et_Surname.getText().toString());
-        editor.putString("pDOB",et_DateofBirth.getText().toString());
-        editor.putString("pGender", gender);
-        editor.putString("pAddress",et_Address.getText().toString());
-        editor.putString("pSuburb",et_Suburb.getText().toString());
-        editor.putString("pCity",et_City.getText().toString());
-        editor.putString("pPostalCode",et_PostalCode.getText().toString());
-        editor.apply();
     }
 
     //Validate Methods
-    private Boolean FirstNameValidate() {
+    public Boolean FirstNameValidate() {
         name = et_Name.getText().toString();
         validFName = true;
 
@@ -153,4 +150,27 @@ public class SlideOne extends AppCompatActivity {
         return validDOB;
     }
 
+    private void savePreferences() {
+        SharedPreferences preferences = getSharedPreferences("slideOnePrefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        String s_Name = et_Name.getText().toString();
+        String s_Surname = et_Surname.getText().toString();
+        String s_DOB = et_DateofBirth.getText().toString();
+        String s_Gender = gender;
+        String s_Address = et_Address.getText().toString();
+        String s_Suburb = et_Suburb.getText().toString();
+        String s_City = et_City.getText().toString();
+        String s_PCode = et_PostalCode.getText().toString();
+
+        editor.putString("pName",s_Name);
+        editor.putString("pSurname",s_Surname);
+        editor.putString("pDOB",s_DOB);
+        editor.putString("pGender",s_Gender);
+        editor.putString("pAddress",s_Address);
+        editor.putString("pSuburb",s_Suburb);
+        editor.putString("pCity",s_City);
+        editor.putString("pPCode",s_PCode);
+        editor.apply();
+    }
 }

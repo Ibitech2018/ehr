@@ -72,6 +72,12 @@
     <string name="desc_slide3">It will alert you when battery reaches 100%</string>
     <string name="welcome_to_ibitech">Welcome to Ibitech</string>
     <string name="be_your_own_patient">Be your own patient</string>
+    <string name="already_a_user">Already a User?</string>
+    <string name="by_registering_you_agree_to_our_terms_and_conditions_and_privacy_policy">By registering, you agree to our Terms and Conditions and Privacy Policy.</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="weak">Weak</string>
+    <string name="create_password">Create Password</string>
+    <string name="register">Register</string>
 
 
 </resources>

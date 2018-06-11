@@ -1,27 +1,61 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class SlideTwo extends AppCompatActivity {
 
     EditText et_Weight,et_Height;
     Spinner sp_MaritalStatus, sp_BloodType;
+    Button btn_Done, btn_Prev;
     String maritalStatus, bloodType;
     Boolean validWeight =false,validHeight = false;
     Float weight, height;
+    ProgressBar pb_loading;
+
+    SessionManager sessionManager;
+
+    String URL_REGISTCONT = "http://sict-iis.nmmu.ac.za/ibitech/app/registercont.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide_two);
+
+        sessionManager = new SessionManager(this);
 
         sp_MaritalStatus = findViewById(R.id.marital_status);
         ArrayAdapter<CharSequence> maritalAdapter = ArrayAdapter.createFromResource(this,R.array.marital_status,R.layout.support_simple_spinner_dropdown_item);
@@ -60,6 +94,10 @@ public class SlideTwo extends AppCompatActivity {
 
         et_Weight = findViewById(R.id.weight);
         et_Height = findViewById(R.id.height);
+        btn_Done = findViewById(R.id.btnDone);
+        btn_Prev = findViewById(R.id.btnPrevSlide);
+
+        pb_loading = findViewById(R.id.pbLoading);
 
         et_Weight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -79,27 +117,63 @@ public class SlideTwo extends AppCompatActivity {
             }
         });
 
-        //Should be under next in IntroActivity ???
-        if(!sp_MaritalStatus.isSelected()){
+        btn_Done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((validWeight)&&(validHeight)){
+                    savePreferences();
+                    retrievePrevPreferences();
+                }
+                else {
+                    Toast.makeText(SlideTwo.this,"Please enter all necessary details",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
-        }
-        if((validWeight)&&(validHeight) && (sp_MaritalStatus.isSelected()) && (sp_BloodType.isSelected())){
-            saveSlideTwoInfo();
-        }
-        else {
-            Toast.makeText(this,"Please enter all necessary details",Toast.LENGTH_LONG).show();
-        }
+        btn_Prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SlideTwo.this,SlideOne.class));
+            }
+        });
 
     }
 
-    public void saveSlideTwoInfo() {
-        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+    public void retrievePrevPreferences() {
+        SharedPreferences preferences = getSharedPreferences("slideOnePrefs",MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("REGP",MODE_PRIVATE);
+
+        String idnumber = prefs.getString("pID","");
+        String cellphone = prefs.getString("pCell","");
+        String email = prefs.getString("pEmail","");
+        String password = prefs.getString("pPass","");
+
+        String name = preferences.getString("pName","");
+        String surname = preferences.getString("pSurname","");
+        String dob = preferences.getString("pDOB","");
+        String gender = preferences.getString("pGender","");
+        String address = preferences.getString("pAddress","");
+        String suburb = preferences.getString("pSuburb","");
+        String city = preferences.getString("pCity","");
+        String code = preferences.getString("pPCode","");
+
+        userRegisterCont(idnumber,cellphone,email,password,name,surname,dob,gender,address,maritalStatus,bloodType,weight.toString(),height.toString());
+    }
+
+    public void savePreferences() {
+        SharedPreferences preferences = getSharedPreferences("slideTwoPrefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("pMaritalStatus",maritalStatus);
-        editor.putString("pBloodType",bloodType);
-        editor.putString("pWeight",et_Weight.getText().toString());
-        editor.putString("pHeight", et_Height.getText().toString());
+        String s_Status = maritalStatus;
+        String s_BloodType = bloodType;
+        String s_Weight = et_Weight.getText().toString();
+        String s_Height = et_Height.getText().toString();
+
+        editor.putString("pMarital",s_Status);
+        editor.putString("pBloodType",s_BloodType);
+        editor.putString("pWeight",s_Weight);
+        editor.putString("pHeight",s_Height);
         editor.apply();
+
     }
 
     private Boolean ValidateHeight() {
@@ -124,5 +198,94 @@ public class SlideTwo extends AppCompatActivity {
 
         return validWeight;
     }
+
+    public void userRegisterCont(final String userID, final String userCell, final String userEmail, final String userPassword, final String userFName, final String userSurname, final String userDOB, final String userGender, final String userAddress, final String userMaritalStatus, final String userBloodType, final String userWeight, final String userHeight) {
+        pb_loading.setVisibility(View.VISIBLE);
+        btn_Done.setVisibility(View.GONE);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTCONT, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                   JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("1")) {
+                        Toast.makeText(SlideTwo.this, "Register Success", Toast.LENGTH_LONG).show();
+
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        Date dob = format.parse("1997-04-25");
+
+                        Integer age = calculateAge(dob);
+
+                        sessionManager.createSession(userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress);
+                        startActivity(new Intent(SlideTwo.this,Dashboard.class));
+                        finish();
+                    }
+                    else {
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Done.setVisibility(View.VISIBLE);
+                        Toast.makeText(SlideTwo.this, "Failed , couldn't complete registration", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    pb_loading.setVisibility(View.GONE);
+                    btn_Done.setVisibility(View.VISIBLE);
+                    Toast.makeText(SlideTwo.this, "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    pb_loading.setVisibility(View.GONE);
+                    btn_Done.setVisibility(View.VISIBLE);
+                    Toast.makeText(SlideTwo.this, "2Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pb_loading.setVisibility(View.GONE);
+                btn_Done.setVisibility(View.VISIBLE);
+                Toast.makeText(SlideTwo.this,"3Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("id",userID);
+                params.put("cell",userCell);
+                params.put("email",userEmail);
+                params.put("pass",userPassword);
+
+                params.put("fname",userFName);
+                params.put("surname",userSurname);
+                params.put("dob",userDOB);
+                params.put("gender",userGender);
+                params.put("address",userAddress);
+                params.put("status",userMaritalStatus);
+                params.put("bloodtype",userBloodType);
+                params.put("weight",userWeight);
+                params.put("height",userHeight);
+
+                return params;
+            }
+        };
+
+        Singleton.getInstance(SlideTwo.this).addToRequestQue(stringRequest);
+    }
+
+    private static int calculateAge(Date dob){
+        Calendar dateOB = Calendar.getInstance();
+        dateOB.setTime(dob);
+
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.setTime(new Date());
+
+        return currentDate.get(Calendar.YEAR) - dateOB.get(Calendar.YEAR);
+    }
+
 
 }

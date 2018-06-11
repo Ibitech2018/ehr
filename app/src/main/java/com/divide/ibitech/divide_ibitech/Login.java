@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
         ProgressBar pb_loading;
 
         //Login URL
-        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/login2.php";
+        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/login.php";
 
         SessionManager sessionManager;
 
@@ -154,10 +154,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(!(validID) && !(validCell)) {
-                    Toast.makeText(getApplicationContext(), "Please ensure all fields are correctly filled!",Toast.LENGTH_LONG).show();
+                if(!(validID) || !(validCell)) {
+                    if(idNumber.isEmpty() || cellphoneNumber.isEmpty())
+                        Toast.makeText(Login.this, "Please ensure all fields are correctly filled!",Toast.LENGTH_LONG).show();
                 }
-                else {
+                if((validID) && (validCell)) {
                     String id = et_IDNumber.getText().toString();
                     String cell = et_CellphoneNum.getText().toString();
                     String pass = et_Password.getText().toString();
@@ -181,7 +182,7 @@ public class Login extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     if (success.equals("1")) {
-                        String name = "", surname = "", age, bloodtype,gender,status,address;
+                        String name = "", surname = "", age = "", bloodtype = "",gender = "",status = "",address = "";
                         for (int i = 0; i < jsonArray.length(); i++) {
 
                             JSONObject object = jsonArray.getJSONObject(i);
@@ -194,14 +195,14 @@ public class Login extends AppCompatActivity {
                             status = object.getString("status").trim();
                             address = object.getString("address").trim();
 
-                            sessionManager.createSession(name,surname,age,bloodtype,gender,status,address);
-
                         }
                         Toast.makeText(Login.this, "Success Login.\nYour Name: " + name + "\nYour Surname: " + surname, Toast.LENGTH_LONG).show();
                         pb_loading.setVisibility(View.GONE);
                         btn_Login.setVisibility(View.VISIBLE);
+
+                        //uses SessionManager class
+                        sessionManager.createSession(name,surname,age,bloodtype,gender,status,address);
                         startActivity(new Intent(Login.this,Dashboard.class));
-//                        createSession(patientID, patientCell,patientPass);
                     }
                     else {
                         pb_loading.setVisibility(View.GONE);
@@ -209,15 +210,14 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
                     }
 
-//                    builder.setTitle("Server Response");
-//                    builder.setMessage(message);
-//                    displayAlert(code);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     pb_loading.setVisibility(View.GONE);
                     btn_Login.setVisibility(View.VISIBLE);
                     Toast.makeText(Login.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -238,26 +238,8 @@ public class Login extends AppCompatActivity {
                 return params;
             }
         };
-        //Singleton.getInstance(Login.this).addToRequestQue(stringRequest);
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        Singleton.getInstance(Login.this).addToRequestQue(stringRequest);
 
-    }
-
-
-    private void createSession(String patientID, String patientCell,String patientPass) {
-        SharedPreferences preferences = getSharedPreferences("MYPREFS",MODE_PRIVATE);
-
-        String patientIDSession = preferences.getString(patientID + "data",patientID);
-        String patientCellSession = preferences.getString(patientCell + "data",patientCell);
-        String patientPassSession = preferences.getString(patientPass + "data",patientPass);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("patientID",patientIDSession);
-        editor.putString("patientCell",patientCellSession);
-        editor.putString("patientPass",patientPassSession);
-
-        editor.apply();
     }
 
     private boolean IDNumberValidate() {

@@ -30,20 +30,26 @@ import com.ybs.passwordstrengthmeter.PasswordStrength;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class  Register extends AppCompatActivity implements TextWatcher {
 
-    AlertDialog.Builder builder;
     String idNumber ,newPassword,cPassword,emailAddress,cellphoneNumber;
     EditText et_IDNumber, et_EnterPassword, et_ConfirmPassword, et_EmailAddress, et_CellphoneNum;
     Button btn_Register;
     TextView tv_login,strengthView;
     String passStrength;
-    ProgressBar progressBar;
-    Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
+    ProgressBar progressBar,pb_loading;
+    public Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
     CheckBox policyCheck;
+
+    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
         policyCheck = findViewById(R.id.chkPolicy);
 
+        pb_loading = findViewById(R.id.pbLoading);
 
         tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,17 +83,16 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         btn_Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                        if(!checked){
+                if(!checked){
                     policyCheck.setError("Please confirm you have read the privacy policy and the terms and conditions");
                 }
                 if((validID) && (validCell) && (validEmail) && (validCpass) && (checked)) {  //validNewPass is not included
-
-                    saveRegisterInfo();
-                    startActivity(new Intent(Register.this, IntroActivity.class));
-                    finish();
+                    idNumber = et_IDNumber.getText().toString();
+                    newPassword = et_EnterPassword.getText().toString();
+                    userRegister(idNumber,newPassword);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Please ensure all fields are filled!",Toast.LENGTH_LONG).show();
+                    Toast .makeText(getApplicationContext(), "Please ensure all fields are filled!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -174,23 +180,33 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
     }
 
-
-    private void saveRegisterInfo() {
-        SharedPreferences preferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+    private void savePreferences() {
+        SharedPreferences preferences = getSharedPreferences("REGP",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("pIDNumber",et_IDNumber.getText().toString());
-        editor.putString("pCellphoneNum",et_CellphoneNum.getText().toString());
-        editor.putString("pEmailAddress",et_EmailAddress.getText().toString());
-        editor.putString("pPassword",et_EnterPassword.getText().toString());
+
+        String s_ID = et_IDNumber.getText().toString();
+        String s_Cell = et_CellphoneNum.getText().toString();
+        String s_Email = et_EmailAddress.getText().toString();
+        String s_Pass = et_EnterPassword.getText().toString();
+
+       /* Intent intent = new Intent(Register.this,IntroActivity.class);
+        intent.putExtra("pID",s_ID);
+        intent.putExtra("pCell",s_Cell);
+        intent.putExtra("pEmail",s_Email);
+        intent.putExtra("pPass",s_Pass);
+        startActivity(intent);*/
+
+        editor.putString("pID",s_ID);
+        editor.putString("pCell",s_Cell);
+        editor.putString("pEmail",s_Email);
+        editor.putString("pPass",s_Pass);
         editor.apply();
 
-        Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show(); // To be removed !!!
 
     }
 
 
     //Validate methods
-
     private boolean IDNumberValidate() {
         idNumber = et_IDNumber.getText().toString();
         validID = false;
@@ -260,6 +276,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         return validCpass;
     }
 
+
     //PASSWORD STRENGTH CHECKER
     @Override
     public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
@@ -307,5 +324,59 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     public void afterTextChanged(Editable editable) {
 
     }
+
+    public void userRegister(final String userID, final String userPassword){
+        pb_loading.setVisibility(View.VISIBLE);
+        btn_Register.setVisibility(View.GONE);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("1")) {
+                        Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                        savePreferences();
+                        startActivity(new Intent(Register.this,SlideOne.class));
+                        finish();
+                    }
+                    else {
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Register.setVisibility(View.VISIBLE);
+                        Toast.makeText(Register.this, "Registration Failed, this user already exist in our database", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    pb_loading.setVisibility(View.GONE);
+                    btn_Register.setVisibility(View.VISIBLE);
+                    Toast.makeText(Register.this, "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pb_loading.setVisibility(View.GONE);
+                btn_Register.setVisibility(View.VISIBLE);
+                Toast.makeText(Register.this,"2Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+
+                params.put("id",userID);
+                params.put("pass",userPassword);
+
+                return params;
+            }
+        };
+
+        Singleton.getInstance(Register.this).addToRequestQue(stringRequest);
+    }
+
 
 }
