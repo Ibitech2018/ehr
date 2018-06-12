@@ -18,37 +18,28 @@
         android:theme="@style/Theme">
         <activity
             android:name=".Welcome"
-            android:theme="@style/NoActionBarTheme"></activity>
-        <activity android:name=".SlideOne"></activity>
-        <activity android:name=".SlideTwo" />
-        <activity
-            android:name=".Register"
-            android:screenOrientation="locked"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".SlideOne" />
+        <activity android:name=".SlideTwo" />
+        <activity
+            android:name=".Register"
+            android:screenOrientation="locked"
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".Login"
             android:screenOrientation="locked"
-            android:theme="@style/NoActionBarTheme">
-
-
-        </activity>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".Dashboard"
             android:screenOrientation="locked"
-            android:theme="@style/NoActionBarTheme">
-
-        </activity>
-        <activity android:name=".AddCondition">
-
-
-        </activity>
+            android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".AddCondition" />
     </application>
 
 </manifest>

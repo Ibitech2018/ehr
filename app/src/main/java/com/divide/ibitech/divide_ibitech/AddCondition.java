@@ -62,12 +62,11 @@ public class AddCondition extends AppCompatActivity {
     }
 
     public void addCondition(final String condition){
-//        pb_loading.setVisibility(View.VISIBLE);
-//        btn_Register.setVisibility(View.GONE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CONDITION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
@@ -77,24 +76,18 @@ public class AddCondition extends AppCompatActivity {
                         finish();
                     }
                     else {
-//                        pb_loading.setVisibility(View.GONE);
-//                        btn_Register.setVisibility(View.VISIBLE);
                         Toast.makeText(AddCondition.this, "Condition cannot be added at the moment.", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-//                    pb_loading.setVisibility(View.GONE);
-//                    btn_Register.setVisibility(View.VISIBLE);
-                    Toast.makeText(AddCondition.this, " 1Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddCondition.this, "Error : There was an internal error in adding the condition", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                pb_loading.setVisibility(View.GONE);
-//                btn_Register.setVisibility(View.VISIBLE);
-                Toast.makeText(AddCondition.this," 2Error"+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AddCondition.this,"Error : There was an internal error in adding the condition",Toast.LENGTH_LONG).show();
 
             }
         })
