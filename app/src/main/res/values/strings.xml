@@ -31,11 +31,17 @@
     <string name="txtTermsandConds">By signing in you agree to our <u>privacy policy</u> and <u>terms and conditions</u>.</string>
     <string name="txtToggleSHOW">SHOW</string>
     <string name="txtUserProfilePic">User profile picture</string>
-    <string name="txtUserFullName">Aphiwe Adonisi</string>
+    <string name="txtUserFullName">- -</string>
     <string name="txtAge">Age:</string>
+    <string name="userAge">-</string>
     <string name="txtGender">Gender:</string>
+    <string name="userGender">-</string>
     <string name="txtBloodType">Blood Type:</string>
+    <string name="userBType">-</string>
     <string name="txtStatus">Status:</string>
+    <string name="userStatus">-</string>
+    <string name="userAddress">-</string>
+    <string name="logout">Logout</string>
     <string name="txtManage_medical_aid">Manage Medical Aid</string>
     <string name="txtMedical_aid">Medical Aid</string>
     <string name="txtManage_next_of_kin">Manage Next Of Kin</string>
@@ -55,21 +61,9 @@
     <string name="txtManage_conditions">Manage conditions</string>
     <string name="txtConditions">Conditions</string>
     <string name="txtHint_Email_address">E-mail Address</string>
-
-
-
-
-
-    <!-- SLIDER TUTORIAL-->
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="start">Done</string>
-    <string name="title_slide1">Connect the charger</string>
-    <string name="desc_slide1">It will start automatically when charger is connected</string>
-    <string name="title_slide2">Battery status update</string>
-    <string name="desc_slide2">It will  keep you updated on battery charging status through notification and home screen widget</string>
-    <string name="title_slide3">Alert on 100%</string>
-    <string name="desc_slide3">It will alert you when battery reaches 100%</string>
     <string name="welcome_to_ibitech">Welcome to Ibitech</string>
     <string name="be_your_own_patient">Be your own patient</string>
     <string name="already_a_user">Already a User?</string>
@@ -78,6 +72,30 @@
     <string name="weak">Weak</string>
     <string name="create_password">Create Password</string>
     <string name="register">Register</string>
+    <string name="cancel"><u>Cancel</u></string>
+
+    <string-array name="conditions">
+        <item>Alcohol poisoning</item>
+        <item>Alzheimer's disease</item>
+        <item>Arthritis</item>
+        <item>Asthma</item>
+        <item>Bile duct cancer</item>
+        <item>Breast cancer</item>
+        <item>Bronchitis</item>
+        <item>Bulimia</item>
+        <item>Chest pain</item>
+        <item>Chickenpox</item>
+        <item>Constipation</item>
+        <item>Diabetes</item>
+        <item>Diarrhoea</item>
+        <item>Down's syndrome</item>
+        <item>Epilepsy</item>
+        <item>Endometriosis</item>
+        <item>Eye cancer</item>
+        <item>Flu</item>
+        <item>Food poisoning</item>
+        <item>Gallstones</item>
+    </string-array>
 
 
 </resources>
