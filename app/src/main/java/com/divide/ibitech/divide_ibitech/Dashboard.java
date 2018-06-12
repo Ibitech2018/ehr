@@ -44,7 +44,7 @@ public class Dashboard extends AppCompatActivity {
     Button btn_Logout,btn_photo_upload;
     private Bitmap bitmap;
     String getId;
-    LinearLayout bt;
+    LinearLayout bt,device;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -72,7 +72,7 @@ public class Dashboard extends AppCompatActivity {
         btn_Logout = findViewById(R.id.btnLogout);
 
         bt = findViewById(R.id.manageCondition);
-
+        device = findViewById(R.id.manageCondition);
         HashMap<String,String> user = sessionManager.getUserDetails();
         String sName = user.get(sessionManager.NAME);
         String sSurname = user.get(sessionManager.SURNAME);
@@ -112,7 +112,12 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(new Intent(Dashboard.this,AddCondition.class));
             }
         });
-
+        device.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, com.divide.ibitech.divide_ibitech.request_device.class));
+            }
+        });
 
     }
 

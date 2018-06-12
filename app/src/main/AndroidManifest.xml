@@ -40,6 +40,7 @@
             android:screenOrientation="locked"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".AddCondition" />
+        <activity android:name=".request_device"></activity>
     </application>
 
 </manifest>
