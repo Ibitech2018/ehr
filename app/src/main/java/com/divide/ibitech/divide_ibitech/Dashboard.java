@@ -72,7 +72,8 @@ public class Dashboard extends AppCompatActivity {
         btn_Logout = findViewById(R.id.btnLogout);
 
         bt = findViewById(R.id.manageCondition);
-        device = findViewById(R.id.manageCondition);
+        device = findViewById(R.id.manageDevice);
+
         HashMap<String,String> user = sessionManager.getUserDetails();
         String sName = user.get(sessionManager.NAME);
         String sSurname = user.get(sessionManager.SURNAME);
@@ -115,7 +116,7 @@ public class Dashboard extends AppCompatActivity {
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, com.divide.ibitech.divide_ibitech.request_device.class));
+                startActivity(new Intent(Dashboard.this, RequestDevice.class));
             }
         });
 

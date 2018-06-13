@@ -196,12 +196,12 @@ public class Login extends AppCompatActivity {
                             address = object.getString("address").trim();
 
                         }
-                        Toast.makeText(Login.this, "Success Login.\nYour Name: " + name + "\nYour Surname: " + surname, Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                         pb_loading.setVisibility(View.GONE);
                         btn_Login.setVisibility(View.VISIBLE);
 
                         //uses SessionManager class
-                        sessionManager.createSession(name,surname,age,bloodtype,gender,status,address);
+                        sessionManager.createSession(id,name,surname,age,bloodtype,gender,status,address);
                         startActivity(new Intent(Login.this,Dashboard.class));
                     }
                     else {

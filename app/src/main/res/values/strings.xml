@@ -73,6 +73,10 @@
     <string name="create_password">Create Password</string>
     <string name="register">Register</string>
     <string name="cancel"><u>Cancel</u></string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="height_cm">Height (cm)</string>
+    <string name="back">Back</string>
+    <string name="status">Status</string>
 
     <string-array name="conditions">
         <item>Alcohol poisoning</item>
@@ -95,6 +99,24 @@
         <item>Flu</item>
         <item>Food poisoning</item>
         <item>Gallstones</item>
+    </string-array>
+
+    <string-array name="devices">
+        <item>Respirator circuit</item>
+        <item>High-concentration oxygen mask</item>
+        <item>Insulin pen</item>
+        <item>Insulin pump</item>
+        <item>Nebulizer</item>
+        <item>Oxygen concentrator</item>
+        <item>Wheelchair</item>
+        <item>Traction splint</item>
+        <item>Nasal cannula</item>
+        <item>Oxygen cylinder</item>
+        <item>Pulse oximeter</item>
+        <item>Walker</item>
+        <item>Glucose meter</item>
+        <item>Hearing aid</item>
+        <item>Apnea monitor</item>
     </string-array>
 
 

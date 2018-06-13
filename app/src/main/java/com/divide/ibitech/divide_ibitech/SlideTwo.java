@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -91,6 +92,8 @@ public class SlideTwo extends AppCompatActivity {
             }
         });
 
+        et_Weight.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        et_Height.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         et_Weight = findViewById(R.id.weight);
         et_Height = findViewById(R.id.height);
@@ -157,7 +160,7 @@ public class SlideTwo extends AppCompatActivity {
         String city = preferences.getString("pCity","");
         String code = preferences.getString("pPCode","");
 
-        userRegisterCont(idnumber,cellphone,email,password,name,surname,dob,gender,address,maritalStatus,bloodType,weight.toString(),height.toString());
+        userRegisterCont(idnumber,cellphone,email,password,name,surname,dob,gender,address,suburb,city,code,maritalStatus,bloodType,weight.toString(),height.toString());
     }
 
     public void savePreferences() {
@@ -199,7 +202,9 @@ public class SlideTwo extends AppCompatActivity {
         return validWeight;
     }
 
-    public void userRegisterCont(final String userID, final String userCell, final String userEmail, final String userPassword, final String userFName, final String userSurname, final String userDOB, final String userGender, final String userAddress, final String userMaritalStatus, final String userBloodType, final String userWeight, final String userHeight) {
+    public void userRegisterCont(final String userID, final String userCell, final String userEmail, final String userPassword,
+                                 final String userFName, final String userSurname, final String userDOB, final String userGender, final String userAddress,final String userSuburb,final String userCity,final  String userPostalCode,
+                                 final String userMaritalStatus, final String userBloodType, final String userWeight, final String userHeight) {
         pb_loading.setVisibility(View.VISIBLE);
         btn_Done.setVisibility(View.GONE);
 
@@ -218,7 +223,7 @@ public class SlideTwo extends AppCompatActivity {
 
                         Integer age = calculateAge(dob);
 
-                        sessionManager.createSession(userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress);
+                        sessionManager.createSession(userID, userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress);
                         startActivity(new Intent(SlideTwo.this,Dashboard.class));
                         finish();
                     }
@@ -265,6 +270,10 @@ public class SlideTwo extends AppCompatActivity {
                 params.put("dob",userDOB);
                 params.put("gender",userGender);
                 params.put("address",userAddress);
+                params.put("suburb",userSuburb);
+                params.put("city",userCity);
+                params.put("code",userPostalCode);
+
                 params.put("status",userMaritalStatus);
                 params.put("bloodtype",userBloodType);
                 params.put("weight",userWeight);
