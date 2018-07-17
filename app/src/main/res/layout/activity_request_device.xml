@@ -96,21 +96,21 @@
         app:layout_constraintVertical_bias="0.914" />
 
     <ImageView
-        android:src="@drawable/ibitech_logo_no_slogan"
-        android:contentDescription="@string/welcome_ibitech_logo"
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="99dp"
+        android:layout_height="106dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/welcome_ibitech_logo"
+        android:src="@drawable/ibitech_logo_no_slogan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintVertical_bias="0.014" />
 
     <EditText
         android:id="@+id/etPractitioner"
