@@ -79,7 +79,7 @@ public class RequestDevice extends AppCompatActivity {
         Date date = new Date();
         tv_Date.setText(dateFormat.format(date));
 
-        btnViewDevices= findViewById(R.id.ViewDevices);
+        //btnViewDevices= findViewById(R.id.ViewDevices);
 
         btnRequest = findViewById(R.id.btnRequest);
 

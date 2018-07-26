@@ -3,39 +3,29 @@ package com.divide.ibitech.divide_ibitech;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class  Register extends AppCompatActivity implements TextWatcher {
@@ -49,7 +39,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     public Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
     CheckBox policyCheck;
 
-    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
+    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app-test/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,11 +78,11 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                 }
                 if((validID) && (validCell) && (validEmail) && (validCpass) && (checked)) {  //validNewPass is not included
                     idNumber = et_IDNumber.getText().toString();
-                    newPassword = et_EnterPassword.getText().toString();
-                    userRegister(idNumber,newPassword);
+                    cellphoneNumber = et_CellphoneNum.getText().toString();
+                    userRegister(idNumber,cellphoneNumber);
                 }
                 else {
-                    Toast .makeText(getApplicationContext(), "Please ensure all fields are filled!",Toast.LENGTH_LONG).show();
+                    Toast .makeText(getApplicationContext(), "Please ensure all fields are valid!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -168,13 +158,13 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         //Confirm password
         et_ConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View view, boolean b) {
-                if(et_ConfirmPassword.getText().length() > 0){
-                    validCpass = ConfirmPasswordValidate();
-                }
-                else {
-                    et_ConfirmPassword.setError(null);
-                }
+            public void onFocusChange(View view, boolean hasFocus) {
+                    if (et_ConfirmPassword.getText().length() > 0) {
+                        validCpass = ConfirmPasswordValidate();
+                    }
+                    else {
+                        et_ConfirmPassword.setError(null);
+                    }
             }
         });
 
@@ -184,10 +174,10 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         SharedPreferences preferences = getSharedPreferences("REGP",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        String s_ID = et_IDNumber.getText().toString();
-        String s_Cell = et_CellphoneNum.getText().toString();
-        String s_Email = et_EmailAddress.getText().toString();
-        String s_Pass = et_EnterPassword.getText().toString();
+        final String s_ID = et_IDNumber.getText().toString();
+        final String s_Cell = et_CellphoneNum.getText().toString();
+        final String s_Email = et_EmailAddress.getText().toString().toLowerCase();
+        final String s_Pass = et_EnterPassword.getText().toString();
 
        /* Intent intent = new Intent(Register.this,IntroActivity.class);
         intent.putExtra("pID",s_ID);
@@ -325,7 +315,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
     }
 
-    public void userRegister(final String userID, final String userPassword){
+    public void userRegister(final String userID, final String cellphoneNumber){
         pb_loading.setVisibility(View.VISIBLE);
         btn_Register.setVisibility(View.GONE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
@@ -365,11 +355,11 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("id",userID);
-                params.put("pass",userPassword);
+                params.put("cell", cellphoneNumber);
 
                 return params;
             }

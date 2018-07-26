@@ -1,19 +1,30 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class SlideOne extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class SlideOne extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    //for datepicker dialog
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     EditText et_Name,et_Surname,et_DateofBirth,et_Address,et_Suburb,et_City,et_PostalCode;
     String name,surname,dob,gender,address,suburb,city,code;
@@ -21,6 +32,7 @@ public class SlideOne extends AppCompatActivity {
     RadioGroup rg_Gender;
     RadioButton rb_Gender;
     Button btn_NextSlide;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +42,7 @@ public class SlideOne extends AppCompatActivity {
         et_Name = findViewById(R.id.Fname);
         et_Surname = findViewById(R.id.Lname);
         et_DateofBirth = findViewById(R.id.Dob);
+
         rg_Gender = findViewById(R.id.rgGender);
         et_Address = findViewById(R.id.address1);
         et_Suburb = findViewById(R.id.suburb);
@@ -69,18 +82,20 @@ public class SlideOne extends AppCompatActivity {
             }
         });
 
-        //DOB
+        //DOB - w/ datepicker dialog
         et_DateofBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View view, boolean b) {
-                if(et_DateofBirth.getText().length() > 0){
-                    validDOB = DOBValidate();
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus){
+                    datePicker(view);
                 }
                 else {
-                    et_DateofBirth.setError(null);
+                    validDOB = DOBValidate();
                 }
             }
+
         });
+
 
         rg_Gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -90,11 +105,11 @@ public class SlideOne extends AppCompatActivity {
                 selected = true;
 
                 if(rb_Gender.getText() == "Female"){
-                    gender = "Female";
+                    gender = "F";
 
                 }
                 else {
-                    gender = "Male";
+                    gender = "M";
                 }
             }
         });
@@ -144,7 +159,7 @@ public class SlideOne extends AppCompatActivity {
         validDOB = true;
 
         if(dob.isEmpty()){
-            et_DateofBirth.setError("Please enter your surname");
+            et_DateofBirth.setError("Please select your date of birth.");
             validDOB = false;
         }
         return validDOB;
@@ -173,4 +188,33 @@ public class SlideOne extends AppCompatActivity {
         editor.putString("pPCode",s_PCode);
         editor.apply();
     }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        Calendar calendar = new GregorianCalendar(year,month,day);
+        setDate(calendar);
+    }
+
+    public void datePicker(View view){
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.show(getFragmentManager(), "date");
+    }
+
+    private void setDate(final Calendar calendar){
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        et_DateofBirth.setText(dateFormat.format(calendar.getTime()));
+    }
+
+    public static class DatePickerFragment extends DialogFragment{
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getActivity(),year,month,day);
+        }
+    }
+
 }

@@ -49,7 +49,7 @@ public class SlideTwo extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    String URL_REGISTCONT = "http://sict-iis.nmmu.ac.za/ibitech/app/registercont.php";
+    String URL_REGISTCONT = "http://sict-iis.nmmu.ac.za/ibitech/app-test/registercont.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +92,6 @@ public class SlideTwo extends AppCompatActivity {
             }
         });
 
-        et_Weight.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        et_Height.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-
         et_Weight = findViewById(R.id.weight);
         et_Height = findViewById(R.id.height);
         btn_Done = findViewById(R.id.btnDone);
@@ -125,7 +122,6 @@ public class SlideTwo extends AppCompatActivity {
             public void onClick(View v) {
                 if((validWeight)&&(validHeight)){
                     savePreferences();
-                    retrievePrevPreferences();
                 }
                 else {
                     Toast.makeText(SlideTwo.this,"Please enter all necessary details",Toast.LENGTH_LONG).show();
@@ -176,6 +172,8 @@ public class SlideTwo extends AppCompatActivity {
         editor.putString("pWeight",s_Weight);
         editor.putString("pHeight",s_Height);
         editor.apply();
+
+        retrievePrevPreferences();
 
     }
 
