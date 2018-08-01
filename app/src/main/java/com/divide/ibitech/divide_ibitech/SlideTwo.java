@@ -201,7 +201,8 @@ public class SlideTwo extends AppCompatActivity {
     }
 
     public void userRegisterCont(final String userID, final String userCell, final String userEmail, final String userPassword,
-                                 final String userFName, final String userSurname, final String userDOB, final String userGender, final String userAddress,final String userSuburb,final String userCity,final  String userPostalCode,
+                                 final String userFName, final String userSurname, final String userDOB, final String userGender,
+                                 final String userAddress,final String userSuburb,final String userCity,final  String userPostalCode,
                                  final String userMaritalStatus, final String userBloodType, final String userWeight, final String userHeight) {
         pb_loading.setVisibility(View.VISIBLE);
         btn_Done.setVisibility(View.GONE);
@@ -214,7 +215,7 @@ public class SlideTwo extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
-                        Toast.makeText(SlideTwo.this, "Register Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SlideTwo.this, "Registration successful", Toast.LENGTH_LONG).show();
 
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date dob = format.parse("1997-04-25");

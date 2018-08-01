@@ -25,9 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SlideOne">
-
-        </activity>
+        <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
             android:name=".Register"
@@ -42,7 +40,9 @@
             android:screenOrientation="locked"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".AddCondition" />
-        <activity android:name=".RequestDevice"></activity>
+        <activity android:name=".RequestDevice" />
+        <activity android:name=".AddSymptom" />
+        <activity android:name=".AddAllergy"></activity>
     </application>
 
 </manifest>

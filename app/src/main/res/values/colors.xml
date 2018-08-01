@@ -18,7 +18,7 @@
 
     <color name="primary">#795548</color>
     <color name="PrimaryDark">#5D4037</color>
-    <color name="White">#ffff</color>
+    <color name="White">#ffffff</color>
     <color name="darkgrey">#6c6c6c</color>
     <color name="cPrimary">#fcdadad9</color>
     <color name="coloPrimaryDark">#FFA000</color>

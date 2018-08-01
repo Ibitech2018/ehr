@@ -38,7 +38,7 @@ public class AddCondition extends AppCompatActivity {
     Boolean cValid = false;
     SessionManager sessionManager;
 
-    String URL_CONDITION = "http://sict-iis.nmmu.ac.za/ibitech/app/addcondition.php";
+    String URL_CONDITION = "http://sict-iis.nmmu.ac.za/ibitech/app-test/addcondition.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

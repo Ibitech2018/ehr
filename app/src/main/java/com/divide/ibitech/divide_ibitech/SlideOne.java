@@ -23,9 +23,6 @@ import java.util.GregorianCalendar;
 
 public class SlideOne extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    //for datepicker dialog
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
-
     EditText et_Name,et_Surname,et_DateofBirth,et_Address,et_Suburb,et_City,et_PostalCode;
     String name,surname,dob,gender,address,suburb,city,code;
     Boolean validFName = false, validSurname = false, validDOB = false,selected = false;

@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class  Register extends AppCompatActivity implements TextWatcher {
 
     String idNumber ,newPassword,cPassword,emailAddress,cellphoneNumber;
@@ -326,7 +327,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
-                        Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Register.this, "Proceed", Toast.LENGTH_LONG).show();
                         savePreferences();
                         startActivity(new Intent(Register.this,SlideOne.class));
                         finish();
@@ -334,7 +335,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                     else {
                         pb_loading.setVisibility(View.GONE);
                         btn_Register.setVisibility(View.VISIBLE);
-                        Toast.makeText(Register.this, "Registration Failed, this user already exist in our database", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Register.this, "This user already exist in our database", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
