@@ -5,10 +5,12 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +31,10 @@ import java.util.Map;
 
 public class AddCondition extends AppCompatActivity {
 
+    Spinner sp_Severity;
     AutoCompleteTextView autoCompleteTextView;
     String[] conditionNames;
-    String idNumber, condition,addDate;
+    String idNumber, condition,addDate,severity;
     TextView tv_date;
     Button btn_add,btn_cancel;
     SharedPreferences prefs;
@@ -53,6 +56,22 @@ public class AddCondition extends AppCompatActivity {
         conditionNames = getResources().getStringArray(R.array.conditions);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,conditionNames);
         autoCompleteTextView.setAdapter(adapter);
+
+        sp_Severity = findViewById(R.id.spnSeverity);
+        ArrayAdapter<CharSequence> severityAdapter = ArrayAdapter.createFromResource(this,R.array.severity_level,R.layout.support_simple_spinner_dropdown_item);
+        severityAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sp_Severity.setAdapter(severityAdapter);
+
+        sp_Severity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?>parent, View view, int position, long id){
+                severity = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?>parent){
+
+            }
+        });
 
         btn_add = findViewById(R.id.btnAdd);
         btn_cancel = findViewById(R.id.btnCancel);
