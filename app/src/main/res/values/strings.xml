@@ -86,26 +86,235 @@
     <string name="status">Status</string>
 
     <string-array name="conditions">
-        <item>Alcohol poisoning</item>
-        <item>Alzheimer's disease</item>
-        <item>Arthritis</item>
-        <item>Asthma</item>
-        <item>Bile duct cancer</item>
-        <item>Breast cancer</item>
-        <item>Bronchitis</item>
-        <item>Bulimia</item>
-        <item>Chest pain</item>
-        <item>Chickenpox</item>
-        <item>Constipation</item>
-        <item>Diabetes</item>
-        <item>Diarrhoea</item>
-        <item>Down's syndrome</item>
-        <item>Epilepsy</item>
-        <item>Endometriosis</item>
-        <item>Eye cancer</item>
-        <item>Flu</item>
-        <item>Food poisoning</item>
-        <item>Gallstones</item>
+        <item>	Acid Ingestion	</item>
+        <item>	Acne	</item>
+        <item>	Actinic Keratoses	</item>
+        <item>	Acute Myocardial Infarction	</item>
+        <item>	Addison's Disease	</item>
+        <item>	Aging	</item>
+        <item>	Alcohol Withdrawal	</item>
+        <item>	Alopecia	</item>
+        <item>	Altitube Illness	</item>
+        <item>	Alzheimer's Disease	</item>
+        <item>	Amebiasis	</item>
+        <item>	Amenorrhea	</item>
+        <item>	Amyotrophic Lateral Sclerosis (ALS)	</item>
+        <item>	Anemia	</item>
+        <item>	Angina	</item>
+        <item>	Anorexia	</item>
+        <item>	Anxiety	</item>
+        <item>	Appetite Stimulant	</item>
+        <item>	Arthritis	</item>
+        <item>	Asthma	</item>
+        <item>	Athlete's Foot	</item>
+        <item>	Attention Deficit Hyperactivity Disorder (ADHD)	</item>
+        <item>	Autism	</item>
+        <item>	Bacterial Infections	</item>
+        <item>	Benign Prostate Hyperplasia (BPH)	</item>
+        <item>	Bilharzia	</item>
+        <item>	Bipolar Disorder	</item>
+        <item>	Bladder Inflammation	</item>
+        <item>	Bladder Spasms	</item>
+        <item>	Bleeding	</item>
+        <item>	Blood Circulation	</item>
+        <item>	Blood Clots	</item>
+        <item>	Bronchial Spasms	</item>
+        <item>	Bronchitis	</item>
+        <item>	Bulimia	</item>
+        <item>	Bursitis	</item>
+        <item>	Cancer - Breast	</item>
+        <item>	Cancer - Colon	</item>
+        <item>	Cancer - Gynaecologic	</item>
+        <item>	Cancer - Haematological	</item>
+        <item>	Cancer - Lung	</item>
+        <item>	Cancer - Prostate	</item>
+        <item>	Cancer - Skin	</item>
+        <item>	Canker Sores (Aphthous Ulcers)	</item>
+        <item>	Cerebral palsy	</item>
+        <item>	Chickenpox	</item>
+        <item>	Cholera	</item>
+        <item>	Chronic Obstructive Pulmonary Disease (COPD)	</item>
+        <item>	Cirrhosis	</item>
+        <item>	Congestive Heart Failure	</item>
+        <item>	Conjunctivitis (Pink Eye)	</item>
+        <item>	Constipation	</item>
+        <item>	Epilepsy	</item>
+        <item>	Corneal Ulcers	</item>
+        <item>	Cushing's Disease	</item>
+        <item>	Cystitis	</item>
+        <item>	Dandruff	</item>
+        <item>	Dementia	</item>
+        <item>	Depression	</item>
+        <item>	Depressive disorder	</item>
+        <item>	Dermatitis	</item>
+        <item>	Dermatomyositis	</item>
+        <item>	Diabetes - Type 1	</item>
+        <item>	Diabetes - Type 2	</item>
+        <item>	Diarrhea	</item>
+        <item>	Digestive Spasms	</item>
+        <item>	Diphtheria	</item>
+        <item>	Diverticulitis	</item>
+        <item>	Dry Eyes	</item>
+        <item>	Ear Infections (Otitis Media)	</item>
+        <item>	Ear Wax	</item>
+        <item>	Ebola	</item>
+        <item>	Eczema	</item>
+        <item>	Emphysema	</item>
+        <item>	Endometriosis	</item>
+        <item>	Erectile Dysfunction (Impotence)	</item>
+        <item>	Esophagitis	</item>
+        <item>	Estrogen Deficiency	</item>
+        <item>	Chronic Fatigue Syndrome (CFS)	</item>
+        <item>	Fibrocystic Breast Disease	</item>
+        <item>	Fluid Retention (Edema, Swelling)	</item>
+        <item>	Foetal alcohol syndrome (FAS)	</item>
+        <item>	Fungal Infections (Ringworm)	</item>
+        <item>	Gallstones	</item>
+        <item>	Gastroesophageal Reflux	</item>
+        <item>	Generalised anxiety disorder	</item>
+        <item>	Genital Warts (Condyloma Acuminatum)	</item>
+        <item>	Giardiasis	</item>
+        <item>	Gingivitis and Gum Disease	</item>
+        <item>	Glaucoma	</item>
+        <item>	Gonorrhea	</item>
+        <item>	Gout	</item>
+        <item>	H1N1 Influenza (Swine Flu)	</item>
+        <item>	Haemophilia	</item>
+        <item>	Hair Loss (Baldness)	</item>
+        <item>	Hay Fever	</item>
+        <item>	Headache (Cluster, Migraine, Sinus, Tension, Vascular)	</item>
+        <item>	Heart disease	</item>
+        <item>	Heart Rhythm Disorders (Irregular Heartbeat)	</item>
+        <item>	Heartburn (Indigestion)	</item>
+        <item>	Hemorrhoids	</item>
+        <item>	Hepatitis A	</item>
+        <item>	Hepatitis B	</item>
+        <item>	Herpes	</item>
+        <item>	High Cholesterol	</item>
+        <item>	HIV/AIDS (AIDS)	</item>
+        <item>	Hives (Urticaria)	</item>
+        <item>	Huntington's	</item>
+        <item>	Hypercalcemia	</item>
+        <item>	Hyperglycemia	</item>
+        <item>	Hypertension (High Blood Pressure)	</item>
+        <item>	Hyperthyroidism	</item>
+        <item>	Hypertriglyceridemia	</item>
+        <item>	Hypoglycemia	</item>
+        <item>	Hypothyroidism	</item>
+        <item>	Incontinence	</item>
+        <item>	Infertility	</item>
+        <item>	Inflammation	</item>
+        <item>	Inflammatory Bowel Disease (Colitis, Crohn's Disease)	</item>
+        <item>	Influenza (Flu)	</item>
+        <item>	Insomnia	</item>
+        <item>	Intermittent Claudication	</item>
+        <item>	Irritable Bowel Syndrome	</item>
+        <item>	Jaundice	</item>
+        <item>	Jet Lag	</item>
+        <item>	Jock Itch	</item>
+        <item>	Kidney Stones	</item>
+        <item>	Labyrinthitis	</item>
+        <item>	Leprosy (Hansen's disease)	</item>
+        <item>	Leukemia	</item>
+        <item>	Lice	</item>
+        <item>	Lupus (Skin and Systemic)	</item>
+        <item>	Lyme Disease	</item>
+        <item>	Malabsorption	</item>
+        <item>	Malaria	</item>
+        <item>	Male Hormone Deficiency	</item>
+        <item>	Measles (Rubeola)	</item>
+        <item>	Melanoma	</item>
+        <item>	Meniere's Disease	</item>
+        <item>	Meningitis	</item>
+        <item>	Menopause	</item>
+        <item>	Dysmenorrhea (Menstrual Cramps)	</item>
+        <item>	Menorrhagia (Excessive Menstruation)	</item>
+        <item>	Motion Sickness	</item>
+        <item>	Multiple Sclerosis	</item>
+        <item>	Muscle Cramp, Spasm, Strain	</item>
+        <item>	Myasthenia Gravis	</item>
+        <item>	Narcolepsy	</item>
+        <item>	Narcotic Withdrawal	</item>
+        <item>	Nasal Allergy	</item>
+        <item>	Nausea and Vomiting	</item>
+        <item>	Neural Tube Defects (prevention)	</item>
+        <item>	Night Blindness	</item>
+        <item>	Obesity	</item>
+        <item>	Obsessive Compulsive Disorder	</item>
+        <item>	Ocular Hypertension	</item>
+        <item>	Osteoporosis	</item>
+        <item>	Overactive Bladder	</item>
+        <item>	Paget's Disease	</item>
+        <item>	Panic Disorder	</item>
+        <item>	Parasites	</item>
+        <item>	Parkinson's Disease	</item>
+        <item>	Parkinson's Tremors	</item>
+        <item>	Pertussis (Whooping cough) (Whooping cough (Pertussis))	</item>
+        <item>	Peyronie's Disease	</item>
+        <item>	Phobias	</item>
+        <item>	Plague	</item>
+        <item>	Poisoning	</item>
+        <item>	Polio	</item>
+        <item>	Post traumatic stress disorder	</item>
+        <item>	Potassium Deficiency	</item>
+        <item>	Premature Labor	</item>
+        <item>	Premenstrual Syndrome (PMS)	</item>
+        <item>	Pressure Sores	</item>
+        <item>	Psoriasis	</item>
+        <item>	Psychosis	</item>
+        <item>	Psychotic Disorders	</item>
+        <item>	Rabies	</item>
+        <item>	Rectal Fissures	</item>
+        <item>	Respiratory Syncytial Virus (RSV)	</item>
+        <item>	Rickets	</item>
+        <item>	Rift valley fever	</item>
+        <item>	Rosacea	</item>
+        <item>	Scabies	</item>
+        <item>	Schizophrenia	</item>
+        <item>	Scleroderma	</item>
+        <item>	Shingles	</item>
+        <item>	Sickle Cell Disease	</item>
+        <item>	Sinusitis	</item>
+        <item>	Skin Disorders (Rashes)	</item>
+        <item>	Skin Lines and Wrinkles	</item>
+        <item>	Sleep Apnea	</item>
+        <item>	Smoking Cessation	</item>
+        <item>	Sore Throat	</item>
+        <item>	Stress	</item>
+        <item>	Stroke	</item>
+        <item>	Stroke Prevention	</item>
+        <item>	Sunburn	</item>
+        <item>	Syphilis	</item>
+        <item>	Tetanus	</item>
+        <item>	Tonsillitis	</item>
+        <item>	Tourette's Syndrome	</item>
+        <item>	Toxoplasmosis	</item>
+        <item>	Transplantation, Organ (Antirejection)	</item>
+        <item>	Tremors	</item>
+        <item>	Trigeminal Neuralgia	</item>
+        <item>	Tuberculosis	</item>
+        <item>	Typhoid fever	</item>
+        <item>	Ulcerative Colitis	</item>
+        <item>	Ulcers	</item>
+        <item>	Urethra Spasms	</item>
+        <item>	Urethritis	</item>
+        <item>	Urinary Frequency	</item>
+        <item>	Urinary Retention	</item>
+        <item>	Urinary Tract Infection	</item>
+        <item>	Urine Acidity	</item>
+        <item>	Uveitis	</item>
+        <item>	Vaginal Infections or Irritation	</item>
+        <item>	Vaginal Yeast Infections	</item>
+        <item>	Vertigo	</item>
+        <item>	Vitamin Deficiency	</item>
+        <item>	Vitiligo	</item>
+        <item>	Warts	</item>
+        <item>	Wilson's Disease	</item>
+        <item>	Worms	</item>
+        <item>	Yellow Fever	</item>
+        <item>	Zika virus	</item>
+        <item>	Zinc Deficiency	</item>
+
     </string-array>
 
     <string-array name="devices">

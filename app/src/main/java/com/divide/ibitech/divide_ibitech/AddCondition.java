@@ -52,11 +52,13 @@ public class AddCondition extends AppCompatActivity {
         HashMap<String,String> user = sessionManager.getUserDetails();
         idNumber = user.get(sessionManager.ID);
 
+
         autoCompleteTextView = findViewById(R.id.condition);
         conditionNames = getResources().getStringArray(R.array.conditions);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,conditionNames);
         autoCompleteTextView.setAdapter(adapter);
 
+        //Load severity spinner
         sp_Severity = findViewById(R.id.spnSeverity);
         ArrayAdapter<CharSequence> severityAdapter = ArrayAdapter.createFromResource(this,R.array.severity_level,R.layout.support_simple_spinner_dropdown_item);
         severityAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -145,7 +147,7 @@ public class AddCondition extends AppCompatActivity {
                         startActivity(new Intent(AddCondition.this,Dashboard.class));
                     }
                     else {
-                        Toast.makeText(AddCondition.this, "Condition cannot be added at the moment.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddCondition.this, "Sorry, condition cannot be added at the moment.", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -174,5 +176,6 @@ public class AddCondition extends AppCompatActivity {
 
         Singleton.getInstance(AddCondition.this).addToRequestQue(stringRequest);
     }
+
 
 }
