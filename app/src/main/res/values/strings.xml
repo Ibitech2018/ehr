@@ -21,6 +21,9 @@
         <item>Low</item>
     </string-array>
 
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
     <string name="terms">Terms and Conditions</string>
     <string name="welcomeLogin_text">Login</string>
     <string name="welcomeRegister_text">Register</string>

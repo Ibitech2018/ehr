@@ -16,4 +16,11 @@
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/raleway</item>
     </style>
 
+    <style name="SideMenuAppBar" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:colorBackground">@color/White</item>
+        <item name="colorPrimary">@color/active_dots</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/raleway</item>
+    </style>
+
 </resources>

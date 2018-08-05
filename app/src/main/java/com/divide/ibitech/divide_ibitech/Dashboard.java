@@ -1,23 +1,18 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,9 +34,10 @@ import java.util.Map;
 
 public class Dashboard extends AppCompatActivity {
 
+
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
-    Button btn_Logout,btn_photo_upload;
+    //Button btn_Logout,btn_photo_upload;
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
@@ -50,7 +46,6 @@ public class Dashboard extends AppCompatActivity {
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
 
     SessionManager sessionManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +63,7 @@ public class Dashboard extends AppCompatActivity {
         tv_MaritalStatus = findViewById(R.id.maritalStatus);
 
         img_ProfilePic = findViewById(R.id.imgProfilePic);
-        btn_photo_upload = findViewById(R.id.btnPhoto);
-        btn_Logout = findViewById(R.id.btnLogout);
+        //btn_photo_upload = findViewById(R.id.btnPhoto);
 
         bt = findViewById(R.id.manageCondition);
         device = findViewById(R.id.manageDevice);
@@ -95,18 +89,18 @@ public class Dashboard extends AppCompatActivity {
         roundedBitmapDrawable.setCircular(true);
         img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
-        btn_Logout.setOnClickListener(new View.OnClickListener() {
+     /*   btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sessionManager.logout();
             }
-        });
-        btn_photo_upload.setOnClickListener(new View.OnClickListener() {
+        });*/
+ /*       btn_photo_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseFile();
             }
-        });
+        });*/
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
