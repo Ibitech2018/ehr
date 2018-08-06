@@ -54,6 +54,18 @@
         <activity
             android:name=".AddAllergy"
             android:theme="@style/NoActionBarTheme" />
+
+        <activity
+            android:name=".Profile"
+            android:label="Profile" />
+
+        <activity android:name=".Reports"
+            android:label="Reports"/>
+
+        <activity android:name=".Settings"
+            android:label="Setting"/>
+
+
     </application>
 
 </manifest>
