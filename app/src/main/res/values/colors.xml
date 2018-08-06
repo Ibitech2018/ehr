@@ -6,6 +6,9 @@
 
     //for expandable list side menu
 
+    <color name="colorShop">#9a1e1b</color>
+    <color name="colorShop2">#071f53</color>
+    <color name="colorNavText">#ffffff</color>
 
 
     <color name="HBackground">#292b3d</color>
