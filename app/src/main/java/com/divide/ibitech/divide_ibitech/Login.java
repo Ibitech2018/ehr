@@ -36,8 +36,8 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
         //Declare variables
-        String idNumber, cellphoneNumber;
-        Boolean validID,validCell;
+        String idNumber = "", cellphoneNumber = "";
+        Boolean validID = false,validCell = false;
 
         //Define views
         EditText et_IDNumber,et_CellphoneNum,et_Password;
@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
         ProgressBar pb_loading;
 
         //Login URL
-        String URL_LOGIN = "http://10.0.2.2/app-test/login.php";
+        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app-test/login.php";
 
         SessionManager sessionManager;
 
@@ -181,40 +181,39 @@ public class Login extends AppCompatActivity {
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                    switch (success) {
-                        case "1":
-                            String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "";
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                    if (success.equals("1")) {
+                        String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "";
+                        for (int i = 0; i < jsonArray.length(); i++) {
 
-                                JSONObject object = jsonArray.getJSONObject(i);
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                name = object.getString("name").trim();
-                                surname = object.getString("surname").trim();
-                                age = object.getString("age").trim();
-                                bloodtype = object.getString("bloodtype").trim();
-                                gender = object.getString("gender").trim();
-                                status = object.getString("status").trim();
-                                address = object.getString("address").trim();
+                            name = object.getString("name").trim();
+                            surname = object.getString("surname").trim();
+                            age = object.getString("age").trim();
+                            bloodtype = object.getString("bloodtype").trim();
+                            gender = object.getString("gender").trim();
+                            status = object.getString("status").trim();
+                            address = object.getString("address").trim();
 
-                            }
-                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                            pb_loading.setVisibility(View.GONE);
-                            btn_Login.setVisibility(View.VISIBLE);
+                        }
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Login.setVisibility(View.VISIBLE);
 
-                            //uses SessionManager class
-                            sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address);
-                            startActivity(new Intent(Login.this, Dashboard.class));
-                            break;
-                        case "-1":
-                            Toast.makeText(Login.this, "Wrong login details", Toast.LENGTH_LONG).show();
-                            pb_loading.setVisibility(View.GONE);
-                            btn_Login.setVisibility(View.VISIBLE);
-                            break;
-                        default:
-                            pb_loading.setVisibility(View.GONE);
-                            btn_Login.setVisibility(View.VISIBLE);
-                            Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
-                            break;
+                        //uses SessionManager class
+                        sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address);
+                        startActivity(new Intent(Login.this, Dashboard.class));
+
+                    } else if (success.equals("-1")) {
+                        Toast.makeText(Login.this, "Wrong login details", Toast.LENGTH_LONG).show();
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Login.setVisibility(View.VISIBLE);
+
+                    } else {
+                        pb_loading.setVisibility(View.GONE);
+                        btn_Login.setVisibility(View.VISIBLE);
+                        Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+
                     }
 
                 } catch (JSONException e) {

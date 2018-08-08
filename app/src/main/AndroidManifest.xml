@@ -17,47 +17,42 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
         <activity
-            android:name=".Welcome"
-            android:theme="@style/NoActionBarTheme">
+            android:name=".Welcome">
 
         </activity>
-        <activity android:name=".SlideOne"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".SlideTwo"
-            android:theme="@style/NoActionBarTheme"/>
+        <activity android:name=".SlideOne"/>
+        <activity android:name=".SlideTwo"/>
         <activity
             android:name=".Register"
-            android:screenOrientation="locked"
-            android:theme="@style/NoActionBarTheme" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Login"
-            android:screenOrientation="locked"
-            android:theme="@style/NoActionBarTheme" />
+            android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked"
-            android:theme="@style/Theme">
+            android:screenOrientation="locked">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".AddCondition"
-            android:theme="@style/NoActionBarTheme">
 
         </activity>
-        <activity android:name=".RequestDevice"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".AddSymptom"
-            android:theme="@style/NoActionBarTheme"/>
+        <activity android:name=".AddCondition">
+
+        </activity>
+        <activity android:name=".RequestDevice"/>
+        <activity android:name=".AddSymptom"/>
         <activity
-            android:name=".AddAllergy"
-            android:theme="@style/NoActionBarTheme" />
+            android:name=".AddAllergy" />
 
         <activity
             android:name=".Profile"
-            android:label="Profile" />
+            android:label="Profile" >
+
+
+        </activity>
 
         <activity android:name=".Reports"
             android:label="Reports"/>
