@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,7 @@ public class Login extends AppCompatActivity {
         ProgressBar pb_loading;
 
         //Login URL
-        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app-test/login.php";
+        String URL_LOGIN = "http://10.0.2.2/app-test/login.php";
 
         SessionManager sessionManager;
 
@@ -177,6 +178,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
