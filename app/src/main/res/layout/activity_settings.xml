@@ -24,6 +24,7 @@
         app:itemIconTint="@color/colorNavText"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
+        app:theme = "@style/NavigationViewStyle"
         android:background="@color/colorShop"/>
 
 

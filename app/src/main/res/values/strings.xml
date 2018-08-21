@@ -51,7 +51,7 @@
     <string name="txtStatus">Status:</string>
     <string name="userStatus">-</string>
     <string name="userAddress">-</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Log Out</string>
     <string name="txtManage_medical_aid">Manage Medical Aid</string>
     <string name="txtMedical_aid">Medical Aid</string>
     <string name="txtManage_next_of_kin">Manage Next Of Kin</string>
