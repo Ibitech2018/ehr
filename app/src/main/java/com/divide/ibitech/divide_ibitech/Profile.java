@@ -37,7 +37,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            return true;
+            startActivity(new Intent(Profile.this,Dashboard.class));
         }
         return super.onOptionsItemSelected(item);
     }

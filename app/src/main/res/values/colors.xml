@@ -61,5 +61,6 @@
 
     <!-- dots inactive colors -->
     <color name="dot_inactive">#cccccc</color>
+    <color name="background_material_light">#030303</color>
 
 </resources>

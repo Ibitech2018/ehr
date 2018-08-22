@@ -37,7 +37,7 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            return true;
+            startActivity(new Intent(Settings.this,Dashboard.class));
         }
         return super.onOptionsItemSelected(item);
     }
