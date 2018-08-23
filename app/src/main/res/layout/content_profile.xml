@@ -158,6 +158,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp">
 
+            <!--Email-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,10 +168,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/headings"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:text="Email"/>
 
                 <TextView
+                    android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -185,6 +187,7 @@
 
             </LinearLayout>
 
+            <!--Phone-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -195,10 +198,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/headings"
-                    android:textSize="13sp"
-                    android:text="Phone"/>
+                    android:textSize="14sp"
+                    android:text="Cellphone Number"/>
 
                 <TextView
+                    android:id="@+id/tv_cellphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -213,6 +217,7 @@
 
             </LinearLayout>
 
+            <!--Marital status-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -223,10 +228,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/headings"
-                    android:textSize="13sp"
-                    android:text="Twitter"/>
+                    android:textSize="14sp"
+                    android:text="Marital Status"/>
 
                 <TextView
+                    android:id="@+id/tv_marital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -241,6 +247,7 @@
 
             </LinearLayout>
 
+            <!--Blood Type-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -251,10 +258,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/headings"
-                    android:textSize="13sp"
-                    android:text="Facebook"/>
+                    android:textSize="14sp"
+                    android:text="Blood Type"/>
 
                 <TextView
+                    android:id="@+id/tv_blood"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"

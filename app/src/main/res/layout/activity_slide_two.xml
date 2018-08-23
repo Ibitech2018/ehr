@@ -199,7 +199,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.836"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:onClick="UploadProfilePicture"/>
 
     <ImageView
         android:id="@+id/uploadIcon"
@@ -218,7 +219,8 @@
         app:layout_constraintHorizontal_bias="0.669"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.959"
+        android:onClick="UploadProfilePicture"/>
 
     <Button
         android:id="@+id/btnPrevSlide"

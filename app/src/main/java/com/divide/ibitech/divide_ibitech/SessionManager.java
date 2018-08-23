@@ -12,7 +12,7 @@ public class SessionManager {
     public Context context;
     int PRIVATE_MODE = 0;
 
-    //For Login
+    //For Login (Dashboard)
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String ID = "IDNUMBER";
@@ -24,6 +24,14 @@ public class SessionManager {
     public static final String STATUS = "STATUS";
     public static final String ADDRESS = "ADDRESS";
 
+    //For Edit Profile
+    public static final String CELLNUMBER = "CELLPHONENUMBER";
+    public static final String EMAIL = "EMAIL";
+    public static final String WEIGHT = "WEIGHT";
+    public static final String HEIGHT = "HEIGHT";
+    public static final String PROFILEPIC = "PROFILEPIC";
+    public static final String MEDICALAID = "MEDICALAIDID";
+
 
 
     public SessionManager(Context context){
@@ -34,7 +42,7 @@ public class SessionManager {
     }
 
     public void createSession(String id, String name, String surname,String age, String bloodtype,
-                              String gender,String status,String address){
+                              String gender,String status,String address, String cell, String email, String weight, String height, String profilePic, String medicalAid){
         editor.putBoolean(LOGIN,true);
         editor.putString(ID,id);
         editor.putString(NAME,name);
@@ -44,6 +52,14 @@ public class SessionManager {
         editor.putString(GENDER,gender);
         editor.putString(STATUS,status);
         editor.putString(ADDRESS,address);
+
+        editor.putString(CELLNUMBER, cell);
+        editor.putString(EMAIL, email);
+        editor.putString(WEIGHT,weight);
+        editor.putString(HEIGHT,height);
+        editor.putString(PROFILEPIC,profilePic);
+        editor.putString(MEDICALAID,medicalAid);
+
         editor.apply();
 
     }
@@ -70,6 +86,14 @@ public class SessionManager {
         user.put(GENDER,sharedPreferences.getString(GENDER,null));
         user.put(STATUS,sharedPreferences.getString(STATUS,null));
         user.put(ADDRESS,sharedPreferences.getString(ADDRESS,null));
+
+        user.put(CELLNUMBER,sharedPreferences.getString(CELLNUMBER,null));
+        user.put(EMAIL,sharedPreferences.getString(EMAIL,null));
+        user.put(WEIGHT,sharedPreferences.getString(WEIGHT,null));
+        user.put(HEIGHT,sharedPreferences.getString(HEIGHT,null));
+        user.put(PROFILEPIC,sharedPreferences.getString(PROFILEPIC,null));
+        user.put(MEDICALAID,sharedPreferences.getString(MEDICALAID,null));
+
         return user;
     }
 

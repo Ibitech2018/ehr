@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/White"
             app:titleTextColor="#00000000"
             app:title= "Dashboard"
             app:elevation="0dp"

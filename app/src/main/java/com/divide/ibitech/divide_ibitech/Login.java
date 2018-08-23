@@ -184,7 +184,7 @@ public class Login extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     if (success.equals("1")) {
-                        String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "";
+                        String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
                         for (int i = 0; i < jsonArray.length(); i++) {
 
                             JSONObject object = jsonArray.getJSONObject(i);
@@ -197,13 +197,22 @@ public class Login extends AppCompatActivity {
                             status = object.getString("status").trim();
                             address = object.getString("address").trim();
 
+                            cellNo = object.getString("cellNo").trim();
+                            email = object.getString("email").trim();
+                            weight = object.getString("weight").trim();
+                            height = object.getString("height").trim();
+                            profilePic = object.getString("profilePic").trim();
+                            medicalAid = object.getString("medicalAid").trim();
+
+
+
                         }
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                         pb_loading.setVisibility(View.GONE);
                         btn_Login.setVisibility(View.VISIBLE);
 
                         //uses SessionManager class
-                        sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address);
+                        sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address,cellNo,email,weight,height,profilePic,medicalAid);
                         startActivity(new Intent(Login.this, Dashboard.class));
 
                     } else if (success.equals("-1")) {

@@ -2,6 +2,7 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -113,6 +114,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        //    for shared preferences
+        SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -141,6 +146,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         bt = findViewById(R.id.manageCondition);
         device = findViewById(R.id.manageDevice);
 
+        //For Dashboard display
+
         HashMap<String,String> user = sessionManager.getUserDetails();
         String sName = user.get(sessionManager.NAME);
         String sSurname = user.get(sessionManager.SURNAME);
@@ -150,12 +157,33 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         String sStatus = user.get(sessionManager.STATUS);
         String sAddress = user.get(sessionManager.ADDRESS);
 
-        tv_FullName.setText(sName + " " + sSurname);
+        tv_FullName.setText(String.format("%s %s", sName, sSurname));
         tv_Age.setText(sAge);
         tv_BloodType.setText(sBloodType);
         tv_Gender.setText(sGender);
         tv_MaritalStatus.setText(sStatus);
         tv_Address.setText(sAddress);
+
+       // For Edit Profile
+        String sID = user.get(sessionManager.ID);
+        String sCell = user.get(sessionManager.CELLNUMBER);
+        String sEmail = user.get(sessionManager.EMAIL);
+        String sWeight = user.get(sessionManager.WEIGHT);
+        String sHeight = user.get(sessionManager.HEIGHT);
+        String sProfilePic = user.get(sessionManager.PROFILEPIC);
+        String sMedicaAid = user.get(sessionManager.MEDICALAID);
+
+        editor.putString("pID",sID);
+        editor.putString("pName",sName);
+        editor.putString("pStatus",sStatus);
+        editor.putString("pCell",sCell);
+        editor.putString("pEmail",sEmail);
+        editor.putString("pWeight", sWeight);
+        editor.putString("pHeight",sHeight);
+        editor.putString("pProfilePic",sProfilePic);
+        editor.putString("pMedicalAid", sMedicaAid);
+        editor.apply();
+
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);

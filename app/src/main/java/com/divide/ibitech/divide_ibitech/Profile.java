@@ -1,6 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,13 +12,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+
+    String id, name, status, cell, email,weight,height,medicalAid,profilePic;
+
+    TextView tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvBlood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        SharedPreferences prefs = getSharedPreferences("PROFILEPREFS", MODE_PRIVATE);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -29,6 +38,31 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        tvName = findViewById(R.id.tv_name);
+        tvAdrress = findViewById(R.id.tv_address);
+        tvEmail = findViewById(R.id.tv_email);
+        tvCellphone = findViewById(R.id.tv_cellphone);
+        tvMarital = findViewById(R.id.tv_marital);
+        tvBlood = findViewById(R.id.tv_blood);
+
+        id = prefs.getString("pID","");
+        name = prefs.getString("pName","");
+        status = prefs.getString("pStatus","");
+        cell = prefs.getString("pCell","");
+        email = prefs.getString("pEmail","");
+        weight = prefs.getString("pWeight","");
+        height = prefs.getString("pHeight","");
+        profilePic = prefs.getString("pProfilePic","");
+        medicalAid = prefs.getString("pMedicalAid","");
+
+
+        tvName.setText(name);
+        tvEmail.setText(email);
+        tvCellphone.setText(cell);
+        tvMarital.setText(status);
+
+
 
     }
 
