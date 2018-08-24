@@ -19,7 +19,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     String id, name, status, cell, email,weight,height,medicalAid,profilePic;
 
-    TextView tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvBlood;
+    TextView tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvWeight,tvMedicalAid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,11 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         tvName = findViewById(R.id.tv_name);
         tvAdrress = findViewById(R.id.tv_address);
+        tvMedicalAid = findViewById(R.id.tv_medicalAid);
         tvEmail = findViewById(R.id.tv_email);
         tvCellphone = findViewById(R.id.tv_cellphone);
         tvMarital = findViewById(R.id.tv_marital);
-        tvBlood = findViewById(R.id.tv_blood);
+        tvWeight = findViewById(R.id.tv_weight);
 
         id = prefs.getString("pID","");
         name = prefs.getString("pName","");
@@ -58,9 +59,12 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
 
         tvName.setText(name);
+        tvMedicalAid.setText(medicalAid);
         tvEmail.setText(email);
         tvCellphone.setText(cell);
         tvMarital.setText(status);
+        tvWeight.setText(weight);
+
 
 
 

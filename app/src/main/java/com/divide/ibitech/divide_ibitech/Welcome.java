@@ -14,8 +14,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.security.auth.login.LoginException;
+
+import io.ghyeok.stickyswitch.widget.StickySwitch;
 
 public class Welcome extends AppCompatActivity {
     //private ViewPager mPager;
@@ -23,6 +28,7 @@ public class Welcome extends AppCompatActivity {
     LinearLayout topPart, bottomPart;
     Button registerButton,loginButton;
     Animation uptodown,downtoup;
+    StickySwitch stickySwitch;
     //private  MpagerAdapter mpagerAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +59,16 @@ public class Welcome extends AppCompatActivity {
             }
         });
 
+        //Sticky toggle switch
 
-/*if (Build.VERSION.SDK_INT >= 19)
+        stickySwitch = findViewById(R.id.stick_switch);
 
-{
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-}
-else
-{
-getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-
-}
-            mPager= (ViewPager)findViewById(R.id.viewPager);
-
-            mpagerAdapter = new MpagerAdapter(layouts,this);
-            mPager.setAdapter(mpagerAdapter);
-
-    }*/
+        stickySwitch.setOnSelectedChangeListener(new StickySwitch.OnSelectedChangeListener() {
+            @Override
+            public void onSelectedChange(@NotNull StickySwitch.Direction direction,@NotNull String s) {
+                Toast.makeText(getBaseContext(), "Now selected : ", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void openRegister() {

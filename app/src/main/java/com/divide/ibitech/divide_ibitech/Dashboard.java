@@ -174,7 +174,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         String sMedicaAid = user.get(sessionManager.MEDICALAID);
 
         editor.putString("pID",sID);
-        editor.putString("pName",sName);
+        editor.putString("pName",sName + " " + sSurname);
         editor.putString("pStatus",sStatus);
         editor.putString("pCell",sCell);
         editor.putString("pEmail",sEmail);

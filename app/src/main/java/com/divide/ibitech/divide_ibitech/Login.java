@@ -197,14 +197,12 @@ public class Login extends AppCompatActivity {
                             status = object.getString("status").trim();
                             address = object.getString("address").trim();
 
-                            cellNo = object.getString("cellNo").trim();
+                            cellNo = object.getString("cell").trim();
                             email = object.getString("email").trim();
                             weight = object.getString("weight").trim();
                             height = object.getString("height").trim();
                             profilePic = object.getString("profilePic").trim();
                             medicalAid = object.getString("medicalAid").trim();
-
-
 
                         }
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
