@@ -32,6 +32,9 @@ public class SessionManager {
     public static final String PROFILEPIC = "PROFILEPIC";
     public static final String MEDICALAID = "MEDICALAIDID";
 
+    public static final String MEDREGNO = "MEDREGNO";
+    public static final String OCCUPATION = "OCCUPATION";
+
 
 
     public SessionManager(Context context){
@@ -62,6 +65,19 @@ public class SessionManager {
 
         editor.apply();
 
+    }
+
+    public void createDocSession(String id, String regNo, String cell,String name, String surname, String email, String occupation){
+        editor.putBoolean(LOGIN,true);
+        editor.putString(ID,id);
+        editor.putString(MEDREGNO,regNo);
+        editor.putString(NAME,name);
+        editor.putString(SURNAME,surname);
+        editor.putString(CELLNUMBER, cell);
+        editor.putString(EMAIL, email);
+        editor.putString(OCCUPATION,occupation);
+
+        editor.apply();
     }
 
     public boolean isLoggin(){
@@ -95,6 +111,18 @@ public class SessionManager {
         user.put(MEDICALAID,sharedPreferences.getString(MEDICALAID,null));
 
         return user;
+    }
+
+    public HashMap<String,String>getDocDetails(){
+        HashMap<String,String> doc = new HashMap<>();
+        doc.put(ID,sharedPreferences.getString(ID,null));
+        doc.put(NAME,sharedPreferences.getString(NAME,null));
+        doc.put(SURNAME,sharedPreferences.getString(SURNAME,null));
+        doc.put(EMAIL,sharedPreferences.getString(EMAIL,null));
+        doc.put(CELLNUMBER,sharedPreferences.getString(CELLNUMBER,null));
+        doc.put(PROFILEPIC,sharedPreferences.getString(OCCUPATION,null));
+
+        return doc;
     }
 
     public void logout(){

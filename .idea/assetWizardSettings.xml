@@ -29,11 +29,24 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="textAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="fontFamily" value="Segoe Print" />
+                                                <entry key="text" value="D" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_clear" />
+                                      <entry key="assetType" value="TEXT" />
+                                      <entry key="outputName" value="ic_doctor" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>

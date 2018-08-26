@@ -72,23 +72,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="2">
 
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="27dp"
+                android:text="User Type"
+                android:textOff="Off"
+                android:textOn="On"
+                android:textSize="25sp"
+                android:layout_marginLeft="27dp"
+                android:layout_alignParentLeft="true" />
 
-            <io.ghyeok.stickyswitch.widget.StickySwitch
-                android:id="@+id/stick_switch"
+            <TextView
+                android:id="@+id/cherrie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:ss_iconPadding="18dp"
-                app:ss_iconSize="22dp"
-                app:ss_leftIcon="@drawable/ic_add"
-                app:ss_leftText="Add"
-                app:ss_rightIcon="@drawable/ic_clear"
-                app:ss_rightText="Clear"
-                app:ss_selectedTextSize="14sp"
-                app:ss_sliderBackgroundColor="@color/colorStickyBG"
-                app:ss_switchColor="@color/colorSticky"
-                app:ss_textColor="@color/White"
-                app:ss_textSize="12sp" />
+                android:text="Cherrie"
+                android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
 
