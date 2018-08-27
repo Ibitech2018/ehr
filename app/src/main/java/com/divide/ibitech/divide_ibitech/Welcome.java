@@ -1,6 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -62,11 +63,16 @@ public class Welcome extends AppCompatActivity {
                 userType = stickySwitch.getText();
             }
         });
+        userType = stickySwitch.getText();
+        SharedPreferences preferences = getSharedPreferences("userType",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
 
+        editor.putString("pUserType", userType);
+        editor.apply();
     }
 
     private void openRegister() {
-        if(userType.equals("Patient") || userType.isEmpty()){
+        if(userType.equals("Patient")){
             Intent intent = new Intent(this, Register.class);
             startActivity(intent);
         }
@@ -77,7 +83,7 @@ public class Welcome extends AppCompatActivity {
 
     }
     private void openLogin() {
-        if(userType.equals("Patient") || userType.isEmpty()){
+        if(userType.equals("Patient")){
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         }

@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class  Register extends AppCompatActivity implements TextWatcher {
 
-    String idNumber ,newPassword,cPassword,emailAddress,cellphoneNumber;
+    String idNumber = "",newPassword = "",cPassword = "",emailAddress = "",cellphoneNumber = "";
     EditText et_IDNumber, et_EnterPassword, et_ConfirmPassword, et_EmailAddress, et_CellphoneNum;
     Button btn_Register;
     TextView tv_login,strengthView;
@@ -79,8 +79,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                 }
                 if((validID) && (validCell) && (validEmail) && (validCpass) && (checked)) {  //validNewPass is not included
                     idNumber = et_IDNumber.getText().toString();
-                    cellphoneNumber = et_CellphoneNum.getText().toString();
-                    userRegister(idNumber,cellphoneNumber);
+                    userRegister(idNumber);
                 }
                 else {
                     Toast .makeText(getApplicationContext(), "Please ensure all fields are valid!",Toast.LENGTH_LONG).show();
@@ -101,7 +100,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
             }
         });
 
-        //Real-time validation
+        /**Real-time validation*/
         //ID Number
         et_IDNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -168,6 +167,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                     }
             }
         });
+
 
     }
 
@@ -316,7 +316,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
     }
 
-    public void userRegister(final String userID, final String cellphoneNumber){
+    public void userRegister(final String userID){
         pb_loading.setVisibility(View.VISIBLE);
         btn_Register.setVisibility(View.GONE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
@@ -360,7 +360,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("id",userID);
-                params.put("cell", cellphoneNumber);
+                //params.put("cell", cellphoneNumber);
 
                 return params;
             }
