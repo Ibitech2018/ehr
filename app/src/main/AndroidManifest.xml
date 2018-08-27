@@ -16,13 +16,7 @@
         android:roundIcon="@drawable/ibitech_mini_logo"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Welcome"></activity>
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -33,7 +27,13 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked" />
+            android:screenOrientation="locked">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AddCondition" />
         <activity android:name=".RequestDevice" />
         <activity android:name=".AddSymptom" />
@@ -49,7 +49,12 @@
             android:label="Setting" />
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard"></activity>
+        <activity android:name=".DocDashboard" />
+        <activity android:name=".NavHeader" />
+        <activity
+            android:name=".Help"
+            android:label="@string/title_activity_help"
+            android:theme="@style/NoActionBarTheme"></activity>
     </application>
 
 </manifest>

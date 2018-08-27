@@ -60,6 +60,11 @@ public class Reports extends AppCompatActivity implements NavigationView.OnNavig
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
+        else if (id == R.id.help){
+            Intent searchIntent = new Intent(Reports.this, com.divide.ibitech.divide_ibitech.Help.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

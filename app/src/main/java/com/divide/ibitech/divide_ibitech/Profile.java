@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -19,7 +20,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     String id, name, status, cell, email,weight,height,medicalAid,profilePic;
 
-    TextView tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvWeight,tvMedicalAid;
+    EditText tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvWeight,tvHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +40,14 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        tvName = findViewById(R.id.tv_name);
-        tvAdrress = findViewById(R.id.tv_address);
-        tvMedicalAid = findViewById(R.id.tv_medicalAid);
-        tvEmail = findViewById(R.id.tv_email);
-        tvCellphone = findViewById(R.id.tv_cellphone);
-        tvMarital = findViewById(R.id.tv_marital);
-        tvWeight = findViewById(R.id.tv_weight);
+        tvName = findViewById(R.id.editName);
+        //tvAdrress = findViewById(R.id.tv_address);
+        //tvMedicalAid = findViewById(R.id.tv_medicalAid);
+        tvEmail = findViewById(R.id.editEmail);
+        tvCellphone = findViewById(R.id.editCell);
+        //tvMarital = findViewById(R.id.tv_marital);
+        tvWeight = findViewById(R.id.editWeight);
+        tvHeight = findViewById(R.id.editHeight);
 
         id = prefs.getString("pID","");
         name = prefs.getString("pName","");
@@ -59,11 +61,12 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
 
         tvName.setText(name);
-        tvMedicalAid.setText(medicalAid);
+//        tvMedicalAid.setText(medicalAid);
         tvEmail.setText(email);
         tvCellphone.setText(cell);
-        tvMarital.setText(status);
+        //tvMarital.setText(status);
         tvWeight.setText(weight);
+        tvHeight.setText(height);
 
 
 
@@ -95,6 +98,11 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         }
         else if (id == R.id.settings){
             Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Settings.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
+        else if (id == R.id.help){
+            Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Help.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }

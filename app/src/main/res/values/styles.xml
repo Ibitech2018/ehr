@@ -8,7 +8,7 @@
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/raleway</item>
     </style>
 
-<!--NoActionBar theme-->
+    <!--NoActionBar theme-->
     <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -23,6 +23,7 @@
 
     <!--Side Menu-->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!--Dashboard Theme-->
@@ -38,6 +39,10 @@
         <item name="android:layout_marginBottom">8dp</item>
 
     </style>
+
+    <style name="NoActionBarTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="NoActionBarTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

@@ -103,6 +103,7 @@
 
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="help">Help</string>
 
     <string-array name="conditions">
         <item>	Acid Ingestion	</item>
@@ -353,6 +354,11 @@
         <item>Hearing aid</item>
         <item>Apnea monitor</item>
     </string-array>
+    <string name="title_activity_help">Help</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 
 </resources>
